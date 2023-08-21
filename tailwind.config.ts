@@ -12,13 +12,17 @@ const config: Config =
     colors:
     {
       "white": "#FFFFFF",
-      "green": "#56B280",
-      "black": "#272727"
+      "border-dark": "#CAC6DA",
+      "border-grey": "#EBE8F4",
+      "light-grey": "#F9F9F9",
+      "primaryy": "#4E4D93",
+      "dark-primary": "#2A254B",
+      "black": "#000000"
     },
     fontFamily:
     {
-      roboto: ["Roboto", "sans-serif"],
-      poppins: ["Poppins", "sans-serif"]
+      epilogue: ["Epilogue", "sans-serif"],
+      azeret: ["Azeret Mono", "monospace"]
     },
     container:
     {

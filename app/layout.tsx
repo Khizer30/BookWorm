@@ -1,7 +1,7 @@
 import { type Metadata } from "next";
 // ..
 import "./globals.css";
-import { roboto, poppins } from "@lib/Fonts";
+import { epilogue, azeret } from "@lib/Fonts";
 import { type Children } from "@lib/Interface";
 
 // Metadata
@@ -37,7 +37,7 @@ export default function Layout({ children }: Children): JSX.Element
 {
   return (
     <html lang="en-PK">
-      <body className={ roboto.className + poppins.className }>
+      <body className={ epilogue.className + azeret.className }>
         { children }
       </body>
     </html>
