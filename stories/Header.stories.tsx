@@ -1,5 +1,5 @@
 import { type Meta, type StoryObj } from "@storybook/react";
-// ..
+//
 
 /*
 import Contact from "@components/Contact";

@@ -3,17 +3,34 @@
 @tailwind utilities;
 
 /* Default */
-h1
-{
-  cursor: default;
-}
-
-p
-{
-  cursor: default;
-}
-
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
 span
 {
   cursor: default;
+}
+
+a
+{
+  cursor: pointer;
+}
+
+.scale
+{
+  transition: all 250ms ease-in;
+}
+
+.scale:hover
+{
+  transform: scale(0.95);
+}
+
+.scale:active
+{
+  transform: scale(0.90);
 }

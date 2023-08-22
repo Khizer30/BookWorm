@@ -22,7 +22,7 @@ const config: Config =
     fontFamily:
     {
       epilogue: ["Epilogue", "sans-serif"],
-      azeret: ["Azeret Mono", "monospace"]
+      montserrat: ["Montserrat", "sans-serif"]
     },
     container:
     {

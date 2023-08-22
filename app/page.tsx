@@ -1,4 +1,6 @@
 import { type Metadata } from "next";
+//
+import Footer from "@components/Footer";
 
 // Metadata
 export const metadata: Metadata =
@@ -13,7 +15,7 @@ export default function Page(): JSX.Element
 {
   return (
     <>
-      <h1> Hello World </h1>
+      <Footer />
     </>
   );
 }
