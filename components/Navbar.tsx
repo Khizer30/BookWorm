@@ -37,7 +37,7 @@ export default function Navbar(): JSX.Element
 
   return (
     <>
-      <nav className=" w-screen h-auto p-4">
+      <nav className=" w-full h-auto p-4">
         <div className=" grid grid-cols-12">
 
           <div className=" w-full h-full col-span-6 md:col-span-3 flex justify-start items-center">
@@ -83,20 +83,29 @@ export default function Navbar(): JSX.Element
         </div>
         <Transition
           show={ isOpen }
-          className=" pb-4 flex flex-col"
-          enter=" transition duration-100 ease-out"
-          enterFrom=" transform scale-95 opacity-0"
-          enterTo=" transform scale-100 opacity-100"
-          leave=" transition duration-75 ease-out"
-          leaveFrom=" transform scale-100 opacity-100"
-          leaveTo=" transform scale-95 opacity-0"
-
+          className=" flex flex-col"
+          enter=" transition ease-out duration-250 transform opacity-0"
+          enterFrom=" translate-x-full"
+          enterTo=" translate-x-0 opacity-100"
+          leave=" transition ease-in duration-250 transform opacity-100"
+          leaveFrom=" translate-x-0"
+          leaveTo=" translate-x-full opacity-0"
         >
-          <a className=" px-4 py-1 hover:font-medium active:font-semibold text-right font-epilogue transition-all"> Quran </a>
-          <a className=" px-4 py-1 hover:font-medium active:font-semibold text-right font-epilogue transition-all"> Hadith </a>
-          <a className=" px-4 py-1 hover:font-medium active:font-semibold text-right font-epilogue transition-all"> Fiqh </a>
-          <a className=" px-4 py-1 hover:font-medium active:font-semibold text-right font-epilogue transition-all"> Ilm-ul-Kalam </a>
-          <a className=" px-4 py-1 hover:font-medium active:font-semibold text-right font-epilogue transition-all"> Tasawwuf </a>
+          <span className=" h-8 px-4 py-1 text-end">
+            <a className=" hover:text-[0.95rem] active:text-[0.90rem] font-epilogue transition-all"> Quran </a>
+          </span>
+          <span className=" h-8 px-4 py-1 text-end">
+            <a className=" hover:text-[0.95rem] active:text-[0.90rem] font-epilogue transition-all"> Hadith </a>
+          </span>
+          <span className=" h-8 px-4 py-1 text-end">
+            <a className=" hover:text-[0.95rem] active:text-[0.90rem] font-epilogue transition-all"> Fiqh </a>
+          </span>
+          <span className=" h-8 px-4 py-1 text-end">
+            <a className=" hover:text-[0.95rem] active:text-[0.90rem] font-epilogue transition-all"> Ilm-ul-Kalam </a>
+          </span>
+          <span className=" h-8 px-4 py-1 text-end">
+            <a className=" hover:text-[0.95rem] active:text-[0.90rem] font-epilogue transition-all"> Tasawwuf </a>
+          </span>
         </Transition>
       </nav>
     </>

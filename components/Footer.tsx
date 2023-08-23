@@ -7,7 +7,7 @@ export default function Footer(): JSX.Element
 {
   return (
     <>
-      <div className=" w-screen h-72 p-4 flex flex-col justify-center items-start bg-dark-primary">
+      <div className=" w-full h-72 p-4 flex flex-col justify-center items-start bg-dark-primary">
 
         <div className=" w-full h-56 flex flex-row justify-around items-center">
           <div className=" w-1/2 h-full flex justify-start items-center">
@@ -21,11 +21,11 @@ export default function Footer(): JSX.Element
 
           <div className=" w-1/2 h-full flex flex-col justify-center items-start">
             <h6 className=" text-white text-xl leading-loose font-epilogue"> Categories </h6>
-            <a className=" text-white text-sm leading-relaxed font-epilogue"> Quran </a>
-            <a className=" text-white text-sm leading-relaxed font-epilogue"> Hadith </a>
-            <a className=" text-white text-sm leading-relaxed font-epilogue"> Fiqh </a>
-            <a className=" text-white text-sm leading-relaxed font-epilogue"> Ilm-ul-Kalam </a>
-            <a className=" text-white text-sm leading-relaxed font-epilogue"> Tasawwuf </a>
+            <a className=" text-white text-sm leading-relaxed font-epilogue scale"> Quran </a>
+            <a className=" text-white text-sm leading-relaxed font-epilogue scale"> Hadith </a>
+            <a className=" text-white text-sm leading-relaxed font-epilogue scale"> Fiqh </a>
+            <a className=" text-white text-sm leading-relaxed font-epilogue scale"> Ilm-ul-Kalam </a>
+            <a className=" text-white text-sm leading-relaxed font-epilogue scale"> Tasawwuf </a>
           </div>
         </div>
 

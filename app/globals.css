@@ -23,7 +23,7 @@ a
 /* Scale */
 .scale
 {
-  transition: all 250ms ease-in;
+  transition: all 150ms ease-in;
 }
 
 .scale:hover

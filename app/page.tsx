@@ -1,6 +1,8 @@
 import { type Metadata } from "next";
 //
 import Navbar from "@components/Navbar";
+import Hero from "@components/Hero";
+import Footer from "@components/Footer";
 
 // Metadata
 export const metadata: Metadata =
@@ -16,6 +18,8 @@ export default function Page(): JSX.Element
   return (
     <>
       <Navbar />
+      <Hero />
+      <Footer />
     </>
   );
 }
