@@ -18,11 +18,11 @@ export default function Hero(): JSX.Element
 
         <div className=" min-h-[20rem] p-6 col-span-1 order-1 md:order-2 flex flex-col justify-center items-center md:bg-light-grey">
 
-          <h1 className=" my-2 text-justify text-xl font-medium font-primary">
+          <h1 className=" my-2 text-xl font-medium font-primary">
             Welcome to Book Worm, your one-stop destination for a world of knowledge and spiritual enrichment.
           </h1>
 
-          <h2 className=" my-2 text-justify text-sm font-primary">
+          <h2 className=" my-2 text-sm font-secondary">
             At Book Worm, we specialize in curating an extensive collection of Islamic books that cater to both curious minds and devout souls.
           </h2>
 
