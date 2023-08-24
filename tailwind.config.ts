@@ -20,7 +20,7 @@ const config: Config =
     fontFamily:
     {
       primary: ["Epilogue", "sans-serif"],
-      secondary: ["Oxygen", "sans-serif"]
+      secondary: ["Inter", "sans-serif"]
     },
     container:
     {

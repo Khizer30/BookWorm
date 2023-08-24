@@ -1,8 +1,8 @@
-import { Epilogue, Oxygen } from "next/font/google";
+import { Epilogue, Inter } from "next/font/google";
 import { type NextFont } from "next/dist/compiled/@next/font";
 
 // Fonts
 const epilogue: NextFont = Epilogue({ weight: "variable", subsets: ["latin"] });
-const oxygen: NextFont = Oxygen({ weight: ["300", "400", "700"], subsets: ["latin", "latin-ext"] });
+const inter: NextFont = Inter({ weight: "variable", subsets: ["latin"] });
 
-export { epilogue, oxygen };
+export { epilogue, inter };

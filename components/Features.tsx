@@ -8,7 +8,7 @@ export default function Features(): JSX.Element
     <>
       <div className=" w-full p-6 flex flex-col justify-center items-center">
         <div className=" w-full h-12 flex justify-center items-center">
-          <h1 className=" text-xl font-medium font-primary"> What makes us different </h1>
+          <h1 className=" text-xl font-medium font-secondary"> What makes us different </h1>
         </div>
         <div className=" w-full grid grid-cols-1 md:grid-cols-3">
 
@@ -17,8 +17,8 @@ export default function Features(): JSX.Element
               icon={ faWallet }
               className=" w-6 h-6 scale"
             />
-            <h2 className=" my-2 text-lg font-medium font-primary"> Unbeatable prices </h2>
-            <h3 className=" text-sm font-secondary"> For our quality, you won’t find better prices anywhere </h3>
+            <h2 className=" my-2 text-lg font-medium font-secondary"> Unbeatable prices </h2>
+            <h3 className=" text-sm font-primary"> For our quality, you won’t find better prices anywhere </h3>
           </div>
 
           <div className=" min-h-[10rem] col-span-1 flex flex-col justify-center items-start">
@@ -26,8 +26,8 @@ export default function Features(): JSX.Element
               icon={ faTruck }
               className=" w-6 h-6 scale"
             />
-            <h2 className=" my-2 text-lg font-medium font-primary"> Next day as standards </h2>
-            <h3 className=" text-sm font-secondary"> Order before 3pm and get your order the next day as standard </h3>
+            <h2 className=" my-2 text-lg font-medium font-secondary"> Next day as standards </h2>
+            <h3 className=" text-sm font-primary"> Order before 3pm and get your order the next day as standard </h3>
           </div>
 
           <div className=" min-h-[10rem] col-span-1 flex flex-col justify-center items-start">
@@ -35,8 +35,8 @@ export default function Features(): JSX.Element
               icon={ faRecycle }
               className=" w-6 h-6 scale"
             />
-            <h2 className=" my-2 text-lg font-medium font-primary"> Recycled packaging </h2>
-            <h3 className=" text-sm font-secondary"> We use 100% recycled packaging to ensure our footprint is manageable </h3>
+            <h2 className=" my-2 text-lg font-medium font-secondary"> Recycled packaging </h2>
+            <h3 className=" text-sm font-primary"> We use 100% recycled packaging to ensure our footprint is manageable </h3>
           </div>
 
         </div>
