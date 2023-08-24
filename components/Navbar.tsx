@@ -50,11 +50,11 @@ export default function Navbar(): JSX.Element
           </div>
 
           <div className=" w-full h-full hidden md:flex col-span-0 md:col-span-6 justify-center items-center">
-            <a className=" p-4 font-epilogue scale"> Quran </a>
-            <a className=" p-4 font-epilogue scale"> Hadith </a>
-            <a className=" p-4 font-epilogue scale"> Fiqh </a>
-            <a className=" p-4 font-epilogue scale"> Ilm-ul-Kalam </a>
-            <a className=" p-4 font-epilogue scale"> Tasawwuf </a>
+            <a className=" p-4 font-primary scale"> Quran </a>
+            <a className=" p-4 font-primary scale"> Hadith </a>
+            <a className=" p-4 font-primary scale"> Fiqh </a>
+            <a className=" p-4 font-primary scale"> Ilm-ul-Kalam </a>
+            <a className=" p-4 font-primary scale"> Tasawwuf </a>
           </div>
 
           <div className=" w-full h-full col-span-6 md:col-span-3 flex justify-end items-center">
@@ -92,19 +92,19 @@ export default function Navbar(): JSX.Element
           leaveTo=" translate-x-full opacity-0"
         >
           <span className=" h-8 px-4 py-1 text-end">
-            <a className=" hover:text-[0.95rem] active:text-[0.90rem] font-epilogue transition-all"> Quran </a>
+            <a className=" hover:text-[0.95rem] active:text-[0.90rem] font-primary transition-all"> Quran </a>
           </span>
           <span className=" h-8 px-4 py-1 text-end">
-            <a className=" hover:text-[0.95rem] active:text-[0.90rem] font-epilogue transition-all"> Hadith </a>
+            <a className=" hover:text-[0.95rem] active:text-[0.90rem] font-primary transition-all"> Hadith </a>
           </span>
           <span className=" h-8 px-4 py-1 text-end">
-            <a className=" hover:text-[0.95rem] active:text-[0.90rem] font-epilogue transition-all"> Fiqh </a>
+            <a className=" hover:text-[0.95rem] active:text-[0.90rem] font-primary transition-all"> Fiqh </a>
           </span>
           <span className=" h-8 px-4 py-1 text-end">
-            <a className=" hover:text-[0.95rem] active:text-[0.90rem] font-epilogue transition-all"> Ilm-ul-Kalam </a>
+            <a className=" hover:text-[0.95rem] active:text-[0.90rem] font-primary transition-all"> Ilm-ul-Kalam </a>
           </span>
           <span className=" h-8 px-4 py-1 text-end">
-            <a className=" hover:text-[0.95rem] active:text-[0.90rem] font-epilogue transition-all"> Tasawwuf </a>
+            <a className=" hover:text-[0.95rem] active:text-[0.90rem] font-primary transition-all"> Tasawwuf </a>
           </span>
         </Transition>
       </nav>

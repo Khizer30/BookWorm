@@ -20,18 +20,18 @@ export default function Footer(): JSX.Element
           </div>
 
           <div className=" w-1/2 h-full flex flex-col justify-center items-start">
-            <h6 className=" text-white text-xl leading-loose font-epilogue"> Categories </h6>
-            <a className=" text-white text-sm leading-relaxed font-epilogue scale"> Quran </a>
-            <a className=" text-white text-sm leading-relaxed font-epilogue scale"> Hadith </a>
-            <a className=" text-white text-sm leading-relaxed font-epilogue scale"> Fiqh </a>
-            <a className=" text-white text-sm leading-relaxed font-epilogue scale"> Ilm-ul-Kalam </a>
-            <a className=" text-white text-sm leading-relaxed font-epilogue scale"> Tasawwuf </a>
+            <h6 className=" text-white text-xl leading-loose font-primary"> Categories </h6>
+            <a className=" text-white text-sm leading-relaxed font-primary scale"> Quran </a>
+            <a className=" text-white text-sm leading-relaxed font-primary scale"> Hadith </a>
+            <a className=" text-white text-sm leading-relaxed font-primary scale"> Fiqh </a>
+            <a className=" text-white text-sm leading-relaxed font-primary scale"> Ilm-ul-Kalam </a>
+            <a className=" text-white text-sm leading-relaxed font-primary scale"> Tasawwuf </a>
           </div>
         </div>
 
         <div className=" w-full h-16 flex flex-col justify-center items-center">
-          <hr className=" w-11/12 h-1 rounded-full bg-primaryy" />
-          <span className=" w-11/12 pt-4 text-white text-sm font-epilogue"> Copyright 2022 Book Worm LTD </span>
+          <hr className=" w-11/12 h-1 rounded-full bg-primary" />
+          <span className=" w-11/12 pt-4 text-white text-sm font-primary"> Copyright 2022 Book Worm LTD </span>
         </div>
 
       </div>

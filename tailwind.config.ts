@@ -12,17 +12,14 @@ const config: Config =
     colors:
     {
       "white": "#FFFFFF",
-      "border-dark": "#CAC6DA",
-      "border-grey": "#EBE8F4",
       "light-grey": "#F9F9F9",
-      "primaryy": "#4E4D93",
+      "primary": "#4E4D93",
       "dark-primary": "#2A254B",
       "black": "#000000"
     },
     fontFamily:
     {
-      epilogue: ["Epilogue", "sans-serif"],
-      montserrat: ["Montserrat", "sans-serif"]
+      primary: ["Epilogue", "sans-serif"]
     },
     container:
     {
