@@ -45,7 +45,7 @@ export default function Navbar(): JSX.Element
               src={ logo }
               alt="Book Worm"
               draggable="false"
-              className=" w-20 h-20 scale"
+              className=" w-20 h-20 cursor-pointer scale"
             />
           </div>
 

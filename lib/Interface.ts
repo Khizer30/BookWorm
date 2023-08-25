@@ -1,4 +1,5 @@
 import type React from "react";
+import { type StaticImageData } from "next/image";
 
 // Children
 interface Children
@@ -6,4 +7,12 @@ interface Children
   children: React.ReactNode;
 }
 
-export type { Children };
+// Book
+interface Book
+{
+  title: string;
+  price: number;
+  img: StaticImageData;
+}
+
+export type { Children, Book };
