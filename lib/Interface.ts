@@ -12,7 +12,7 @@ interface Book
 {
   title: string;
   price: number;
-  img: StaticImageData;
+  image: StaticImageData;
 }
 
 export type { Children, Book };

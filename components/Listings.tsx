@@ -12,22 +12,22 @@ const books: Book[] =
     {
       title: "The Rumi Collection",
       price: 699,
-      img: img1
+      image: img1
     },
     {
       title: "The Reconstruction of Religious Thought in Islam",
       price: 999,
-      img: img2
+      image: img2
     },
     {
       title: "Iqbal - The Life of Poet, Philosopher & Politician",
       price: 1199,
-      img: img3
+      image: img3
     },
     {
       title: "The Sole Spokesman",
       price: 499,
-      img: img4
+      image: img4
     }
   ];
 
@@ -41,7 +41,7 @@ export default function Listings(): JSX.Element
       <Card
         title={ book.title }
         price={ book.price }
-        img={ book.img }
+        image={ book.image }
       />
     );
   }
@@ -56,7 +56,7 @@ export default function Listings(): JSX.Element
           { books.map(booksMapper) }
         </div>
         <div className=" w-full my-2 flex justify-center items-center">
-          <button className=" w-36 h-12 rounded-lg text-sm font-secondary bg-light-grey scale">
+          <button className=" w-36 h-12 rounded-lg text-sm font-primary bg-light-grey scale">
             View Collection
           </button>
         </div>

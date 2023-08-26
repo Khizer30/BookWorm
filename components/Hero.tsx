@@ -24,7 +24,7 @@ export default function Hero(): JSX.Element
             At Book Worm, we specialize in curating an extensive collection of Islamic books that cater to both curious minds and devout souls.
           </h2>
           <div className=" w-full my-2 flex justify-center items-center">
-            <button className=" w-36 h-12 rounded-lg text-sm font-secondary bg-light-grey md:bg-white scale">
+            <button className=" w-36 h-12 rounded-lg text-sm font-primary bg-light-grey md:bg-white scale">
               View Collection
             </button>
           </div>

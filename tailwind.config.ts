@@ -19,8 +19,8 @@ const config: Config =
     },
     fontFamily:
     {
-      primary: ["Epilogue", "sans-serif"],
-      secondary: ["Inter", "sans-serif"]
+      primary: ["Epilogue Variable", "sans-serif"],
+      secondary: ["Montserrat Variable", "sans-serif"]
     },
     container:
     {

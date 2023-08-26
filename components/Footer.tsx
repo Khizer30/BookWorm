@@ -31,7 +31,7 @@ export default function Footer(): JSX.Element
         </div>
         <div className=" w-full mt-8 flex flex-col justify-center items-center">
           <hr className=" w-11/12 h-1 rounded-full bg-primary" />
-          <span className=" w-11/12 py-4 text-white text-sm font-secondary"> Copyright 2022 Book Worm LTD </span>
+          <span className=" w-11/12 py-4 text-white text-sm font-primary"> Copyright 2022 Book Worm LTD </span>
         </div>
       </div>
     </>

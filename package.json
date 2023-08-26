@@ -11,10 +11,13 @@
   },
   "dependencies":
   {
+    "@fontsource-variable/epilogue": "^5.0.9",
+    "@fontsource-variable/montserrat": "^5.0.9",
+
     "@fortawesome/free-solid-svg-icons": "^6.4.2",
     "@fortawesome/react-fontawesome": "^0.2.0",
-    "@headlessui/react": "^1.7.17",
 
+    "@headlessui/react": "^1.7.17",
     "next": "13.4.19",
     "react": "18.2.0",
     "react-dom": "18.2.0"

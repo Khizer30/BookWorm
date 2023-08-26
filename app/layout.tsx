@@ -1,7 +1,8 @@
 import { type Metadata } from "next";
+import "@fontsource-variable/epilogue";
+import "@fontsource-variable/montserrat";
 //
 import "./globals.css";
-import { epilogue, inter } from "@lib/Fonts";
 import { type Children } from "@lib/Interface";
 
 // Metadata
@@ -37,7 +38,7 @@ export default function Layout({ children }: Children): JSX.Element
 {
   return (
     <html lang="en-PK">
-      <body className={ epilogue.className + inter.className }>
+      <body>
         { children }
       </body>
     </html>
