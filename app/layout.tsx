@@ -9,8 +9,8 @@ import { type Children } from "@lib/Interface";
 export const metadata: Metadata =
 {
   title: { default: "Book Worm", template: "%s" },
-  description: "%s",
   keywords: "%s",
+  description: "Book Worm is your premier e-commerce destination for a vast selection of books.",
   viewport:
   {
     width: "device-width",

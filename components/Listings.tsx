@@ -1,35 +1,7 @@
 //
 import Card from "@components/Card";
+import books from "@lib/Books";
 import { type Book } from "@lib/Interface";
-import img1 from "@images/demo/1.webp";
-import img2 from "@images/demo/2.webp";
-import img3 from "@images/demo/3.webp";
-import img4 from "@images/demo/4.webp";
-
-// Books
-const books: Book[] =
-  [
-    {
-      title: "The Rumi Collection",
-      price: 699,
-      image: img1
-    },
-    {
-      title: "The Reconstruction of Religious Thought in Islam",
-      price: 999,
-      image: img2
-    },
-    {
-      title: "Iqbal - The Life of Poet, Philosopher & Politician",
-      price: 1199,
-      image: img3
-    },
-    {
-      title: "The Sole Spokesman",
-      price: 499,
-      image: img4
-    }
-  ];
 
 // Listings
 export default function Listings(): JSX.Element
@@ -38,11 +10,7 @@ export default function Listings(): JSX.Element
   function booksMapper(book: Book): JSX.Element
   {
     return (
-      <Card
-        title={ book.title }
-        price={ book.price }
-        image={ book.image }
-      />
+      <Card { ...book } />
     );
   }
 

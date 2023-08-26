@@ -12,6 +12,7 @@ interface Book
 {
   title: string;
   price: number;
+  description?: string;
   image: StaticImageData;
 }
 

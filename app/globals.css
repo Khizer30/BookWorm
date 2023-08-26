@@ -35,3 +35,22 @@ a
 {
   transform: scale(0.90);
 }
+
+/* Input */
+.input
+{
+  border: 1px solid #FFFFFF;
+  transition: all 150ms ease-in;
+}
+
+.input:hover
+{
+  box-shadow: 1.5px 1.5px #2A254B;
+}
+
+.input:focus
+{
+  outline: none;
+  border: 1px solid #2A254B;
+  box-shadow: 2px 2px #2A254B;
+}
