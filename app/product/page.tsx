@@ -21,7 +21,7 @@ export default function Page(): JSX.Element
     <>
       <Navbar />
       <Product { ...books[1] } />
-      <Listings />
+      <Listings heading="Recommended" />
       <Features />
       <Footer />
     </>

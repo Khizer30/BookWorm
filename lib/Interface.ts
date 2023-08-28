@@ -16,4 +16,13 @@ interface Book
   image: StaticImageData;
 }
 
-export type { Children, Book };
+// Cart Item
+interface CartItem
+{
+  title: string;
+  price: number;
+  image: StaticImageData;
+  quantity: number;
+}
+
+export type { Children, Book, CartItem };

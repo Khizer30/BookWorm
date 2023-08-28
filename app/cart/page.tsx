@@ -1,16 +1,14 @@
 import { type Metadata } from "next";
 //
 import Navbar from "@components/Navbar";
-import Hero from "@components/Hero";
-import Features from "@components/Features";
-import Listings from "@components/Listings";
+import Checkout from "@components/Checkout";
 import Footer from "@components/Footer";
 
 // Metadata
 export const metadata: Metadata =
 {
-  title: "Book Worm",
-  keywords: ["Book Worm", "Homepage"]
+  title: "Shopping Cart | Book Worm",
+  keywords: ["Book Worm", "Shopping Cart"]
 };
 
 // Page
@@ -19,9 +17,7 @@ export default function Page(): JSX.Element
   return (
     <>
       <Navbar />
-      <Hero />
-      <Features />
-      <Listings heading="Popular Books" />
+      <Checkout />
       <Footer />
     </>
   );
