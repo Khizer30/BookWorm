@@ -1,10 +1,20 @@
 import Image from "next/image";
 //
+import { subjects } from "@lib/Filters";
 import logo from "@images/logo.webp";
+import { type Radio } from "@lib/Interface";
 
 // Footer
 export default function Footer(): JSX.Element
 {
+  // Link Mapper
+  function linkMapper(option: Radio): JSX.Element
+  {
+    return (
+      <a key={ option.value } className=" mt-1 text-white text-sm font-secondary scale"> { option.name } </a>
+    );
+  }
+
   return (
     <>
       <div className=" w-full h-72 p-6 bg-dark-primary">
@@ -21,11 +31,7 @@ export default function Footer(): JSX.Element
 
           <div className=" w-full h-full col-span-1 flex flex-col justify-center items-start">
             <h6 className=" my-1 text-white text-xl font-secondary"> Categories </h6>
-            <a className=" mt-1 text-white text-sm font-secondary scale"> Quran </a>
-            <a className=" mt-1 text-white text-sm font-secondary scale"> Hadith </a>
-            <a className=" mt-1 text-white text-sm font-secondary scale"> Fiqh </a>
-            <a className=" mt-1 text-white text-sm font-secondary scale"> Ilm-ul-Kalam </a>
-            <a className=" mt-1 text-white text-sm font-secondary scale"> Tasawwuf </a>
+            { subjects.slice(1).map(linkMapper) }
           </div>
 
         </div>

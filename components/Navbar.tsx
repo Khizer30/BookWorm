@@ -5,7 +5,9 @@ import { Transition } from "@headlessui/react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCartShopping, faUser, faBars } from "@fortawesome/free-solid-svg-icons";
 //
+import { subjects } from "@lib/Filters";
 import logo from "@images/logo.webp";
+import { type Radio } from "@lib/Interface";
 
 // Navbar
 export default function Navbar(): JSX.Element
@@ -35,6 +37,24 @@ export default function Navbar(): JSX.Element
     setIsOpen(!isOpen);
   }
 
+  // Link Mapper
+  function linkMapper(option: Radio): JSX.Element
+  {
+    return (
+      <a key={ option.value } className=" p-4 font-primary scale"> { option.name } </a>
+    );
+  }
+
+  // Span Mapper
+  function spanMapper(option: Radio): JSX.Element
+  {
+    return (
+      <span key={ option.value } className=" h-8 px-4 py-1 text-end">
+        <a className=" hover:text-[0.95rem] active:text-[0.90rem] font-primary transition-all"> { option.name } </a>
+      </span>
+    );
+  }
+
   return (
     <>
       <nav className=" w-full h-auto p-4">
@@ -50,11 +70,7 @@ export default function Navbar(): JSX.Element
           </div>
 
           <div className=" w-full h-full hidden md:flex col-span-0 md:col-span-6 justify-center items-center">
-            <a className=" p-4 font-primary scale"> Quran </a>
-            <a className=" p-4 font-primary scale"> Hadith </a>
-            <a className=" p-4 font-primary scale"> Fiqh </a>
-            <a className=" p-4 font-primary scale"> Ilm-ul-Kalam </a>
-            <a className=" p-4 font-primary scale"> Tasawwuf </a>
+            { subjects.slice(1).map(linkMapper) }
           </div>
 
           <div className=" w-full h-full col-span-6 md:col-span-3 flex justify-end items-center">
@@ -91,21 +107,7 @@ export default function Navbar(): JSX.Element
           leaveFrom=" translate-x-0"
           leaveTo=" translate-x-full opacity-0"
         >
-          <span className=" h-8 px-4 py-1 text-end">
-            <a className=" hover:text-[0.95rem] active:text-[0.90rem] font-primary transition-all"> Quran </a>
-          </span>
-          <span className=" h-8 px-4 py-1 text-end">
-            <a className=" hover:text-[0.95rem] active:text-[0.90rem] font-primary transition-all"> Hadith </a>
-          </span>
-          <span className=" h-8 px-4 py-1 text-end">
-            <a className=" hover:text-[0.95rem] active:text-[0.90rem] font-primary transition-all"> Fiqh </a>
-          </span>
-          <span className=" h-8 px-4 py-1 text-end">
-            <a className=" hover:text-[0.95rem] active:text-[0.90rem] font-primary transition-all"> Ilm-ul-Kalam </a>
-          </span>
-          <span className=" h-8 px-4 py-1 text-end">
-            <a className=" hover:text-[0.95rem] active:text-[0.90rem] font-primary transition-all"> Tasawwuf </a>
-          </span>
+          { subjects.slice(1).map(spanMapper) }
         </Transition>
       </nav>
     </>

@@ -7,6 +7,19 @@ interface Children
   children: React.ReactNode;
 }
 
+// Radio
+interface Radio
+{
+  name: string;
+  value: string | number;
+}
+
+// Headless UI
+interface HeadlessUI
+{
+  checked: boolean;
+}
+
 // Book
 interface Book
 {
@@ -25,4 +38,4 @@ interface CartItem
   quantity: number;
 }
 
-export type { Children, Book, CartItem };
+export type { Children, Radio, HeadlessUI, Book, CartItem };
