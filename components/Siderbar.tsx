@@ -1,6 +1,6 @@
 "use client";
 import { useState } from "react";
-import { RadioGroup, Popover } from "@headlessui/react";
+import { RadioGroup, Popover, Transition } from "@headlessui/react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCaretDown } from "@fortawesome/free-solid-svg-icons";
 //
@@ -56,19 +56,28 @@ export default function Sidebar({ children }: Children): JSX.Element
                 className=" w-3 h-3 ml-2"
               />
             </Popover.Button>
-            <Popover.Panel className=" w-36 mt-2 pb-2 z-10 flex flex-col justify-center items-start absolute rounded bg-light-grey">
+            <Transition
+              enter=" transition ease-out duration-200"
+              enterFrom=" transform scale-95 opacity-0"
+              enterTo=" transform scale-100 opacity-100"
+              leave=" transition ease-in duration-200"
+              leaveFrom=" transform scale-100 opacity-100"
+              leaveTo=" transform scale-95 opacity-0"
+            >
+              <Popover.Panel className=" w-36 mt-2 pb-2 z-10 flex flex-col justify-center items-start absolute rounded bg-light-grey">
 
-              <RadioGroup value={ subject } onChange={ setSubject } className=" w-full">
-                <RadioGroup.Label as="h5" className=" p-2 text-sm font-semibold font-secondary"> Subject </RadioGroup.Label>
-                { subjects.map(popoverMapper) }
-              </RadioGroup>
+                <RadioGroup value={ subject } onChange={ setSubject } className=" w-full">
+                  <RadioGroup.Label as="h5" className=" p-2 text-sm font-semibold font-secondary"> Subject </RadioGroup.Label>
+                  { subjects.map(popoverMapper) }
+                </RadioGroup>
 
-              <RadioGroup value={ price } onChange={ setPrice } className=" w-full">
-                <RadioGroup.Label as="h5" className=" p-2 text-sm font-semibold font-secondary"> Price </RadioGroup.Label>
-                { prices.map(popoverMapper) }
-              </RadioGroup>
+                <RadioGroup value={ price } onChange={ setPrice } className=" w-full">
+                  <RadioGroup.Label as="h5" className=" p-2 text-sm font-semibold font-secondary"> Price </RadioGroup.Label>
+                  { prices.map(popoverMapper) }
+                </RadioGroup>
 
-            </Popover.Panel>
+              </Popover.Panel>
+            </Transition>
           </Popover>
 
           <Popover className=" relative">
@@ -79,13 +88,22 @@ export default function Sidebar({ children }: Children): JSX.Element
                 className=" w-3 h-3 ml-2"
               />
             </Popover.Button>
-            <Popover.Panel className=" w-36 mt-2 py-2 z-10 flex flex-col justify-center items-start absolute rounded bg-light-grey">
+            <Transition
+              enter=" transition ease-out duration-200"
+              enterFrom=" transform scale-95 opacity-0"
+              enterTo=" transform scale-100 opacity-100"
+              leave=" transition ease-in duration-200"
+              leaveFrom=" transform scale-100 opacity-100"
+              leaveTo=" transform scale-95 opacity-0"
+            >
+              <Popover.Panel className=" w-36 mt-2 py-2 z-10 flex flex-col justify-center items-start absolute rounded bg-light-grey">
 
-              <RadioGroup value={ sort } onChange={ setSort } className=" w-full">
-                { sorts.map(popoverMapper) }
-              </RadioGroup>
+                <RadioGroup value={ sort } onChange={ setSort } className=" w-full">
+                  { sorts.map(popoverMapper) }
+                </RadioGroup>
 
-            </Popover.Panel>
+              </Popover.Panel>
+            </Transition>
           </Popover>
 
         </div>
