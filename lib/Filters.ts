@@ -50,4 +50,17 @@ const prices: Radio[] =
     }
   ];
 
-export { subjects, prices };
+// Sorts
+const sorts: Radio[] =
+  [
+    {
+      name: "Ascending",
+      value: 1
+    },
+    {
+      name: "Descending",
+      value: 0
+    }
+  ];
+
+export { subjects, prices, sorts };
