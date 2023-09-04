@@ -57,10 +57,10 @@ export default function Sidebar({ children }: Children): JSX.Element
               />
             </Popover.Button>
             <Transition
-              enter=" transition ease-out duration-200"
+              enter=" transition ease-out duration-150"
               enterFrom=" transform scale-95 opacity-0"
               enterTo=" transform scale-100 opacity-100"
-              leave=" transition ease-in duration-200"
+              leave=" transition ease-in duration-150"
               leaveFrom=" transform scale-100 opacity-100"
               leaveTo=" transform scale-95 opacity-0"
             >
@@ -89,10 +89,10 @@ export default function Sidebar({ children }: Children): JSX.Element
               />
             </Popover.Button>
             <Transition
-              enter=" transition ease-out duration-200"
+              enter=" transition ease-out duration-150"
               enterFrom=" transform scale-95 opacity-0"
               enterTo=" transform scale-100 opacity-100"
-              leave=" transition ease-in duration-200"
+              leave=" transition ease-in duration-150"
               leaveFrom=" transform scale-100 opacity-100"
               leaveTo=" transform scale-95 opacity-0"
             >

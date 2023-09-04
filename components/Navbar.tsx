@@ -41,7 +41,9 @@ export default function Navbar(): JSX.Element
   function linkMapper(option: Radio): JSX.Element
   {
     return (
-      <a key={ option.value } className=" p-4 font-primary scale"> { option.name } </a>
+      <span key={ option.value } className=" w-28 h-full flex justify-center items-center">
+        <a className=" hover:text-sm active:text-xs font-primary transition-all"> { option.name } </a>
+      </span>
     );
   }
 
@@ -50,7 +52,7 @@ export default function Navbar(): JSX.Element
   {
     return (
       <span key={ option.value } className=" h-8 px-4 py-1 text-end">
-        <a className=" hover:text-[0.95rem] active:text-[0.90rem] font-primary transition-all"> { option.name } </a>
+        <a className=" hover:text-sm active:text-xs font-primary transition-all"> { option.name } </a>
       </span>
     );
   }

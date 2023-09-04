@@ -11,7 +11,7 @@ export default function Footer(): JSX.Element
   function linkMapper(option: Radio): JSX.Element
   {
     return (
-      <a key={ option.value } className=" mt-1 text-white text-sm font-secondary scale"> { option.name } </a>
+      <a key={ option.value } className=" my-1 text-white text-sm font-secondary scale"> { option.name } </a>
     );
   }
 

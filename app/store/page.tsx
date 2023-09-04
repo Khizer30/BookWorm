@@ -3,7 +3,7 @@ import { type Metadata } from "next";
 import Navbar from "@components/Navbar";
 import Header from "@components/Header";
 import Sidebar from "@components/Siderbar";
-import Listings from "@components/Listings";
+import Store from "@components/Store";
 import Footer from "@components/Footer";
 
 // Metadata
@@ -21,8 +21,7 @@ export default function Page(): JSX.Element
       <Navbar />
       <Header />
       <Sidebar>
-        <Listings heading="" />
-        <Listings heading="" />
+        <Store />
       </Sidebar>
       <Footer />
     </>
