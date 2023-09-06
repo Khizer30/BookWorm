@@ -40,7 +40,7 @@ export default function Product({ title, price, description, image }: Book): JSX
               max={ 9 }
               required
               value={ 1 }
-              className=" w-full md:w-28 h-10 mt-2 p-4 rounded text-sm font-primary input"
+              className=" w-full md:w-36 h-10 mt-2 p-4 rounded text-center md:text-start text-sm font-primary input"
             />
           </div>
 
