@@ -1,6 +1,8 @@
 "use client";
 import { useState, useEffect } from "react";
 import Image from "next/image";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faTrashCan } from "@fortawesome/free-solid-svg-icons";
 //
 import books from "@lib/Books";
 import { type CartItem } from "@lib/Interface";
@@ -55,7 +57,6 @@ export default function Checkout(): JSX.Element
           <h2 className=" w-full pb-2 col-span-6 md:col-span-8 text-start md:text-lg font-medium font-secondary border-b-2 border-b-white"> Product </h2>
           <h2 className=" w-full pb-2 col-span-3 md:col-span-2 text-center md:text-lg font-medium font-secondary border-b-2 border-b-white"> Quantity </h2>
           <h2 className=" w-full pb-2 col-span-3 md:col-span-2 text-end md:text-lg font-medium font-secondary border-b-2 border-b-white"> Total </h2>
-
           { (items.length === 0) &&
             <div className=" w-full h-full my-2 col-span-12 flex flex-col justify-center items-center">
               <h3 className=" my-2 text-xl font-medium font-secondary"> Your Cart is Empty </h3>
@@ -64,11 +65,8 @@ export default function Checkout(): JSX.Element
               </button>
             </div>
           }
-
           { items.map(itemsMapper) }
-
         </div>
-
         { (items.length !== 0) &&
           <div className=" w-full flex flex-col justify-center items-end">
             <h2 className=" md:text-lg font-medium font-secondary"> { `Subtotal Rs ${ total }` } </h2>
@@ -77,7 +75,6 @@ export default function Checkout(): JSX.Element
             </button>
           </div>
         }
-
       </div >
     </>
   );
@@ -93,7 +90,7 @@ function Item({ title, price, image, quantity }: CartItem): JSX.Element
           src={ image }
           alt={ title }
           draggable="false"
-          className=" w-12 md:w-20 mr-1"
+          className=" w-12 md:w-20 mr-1 rounded"
         />
         <div className=" w-full ml-1">
           <h2 className=" w-full mb-1 text-sm md:text-base font-medium font-secondary"> { title } </h2>
@@ -102,7 +99,12 @@ function Item({ title, price, image, quantity }: CartItem): JSX.Element
       </div>
 
       <div className=" w-full my-4 col-span-3 md:col-span-2 flex justify-center items-center">
-        <h3 className=" w-12 md:w-20 h-10 flex justify-center items-center rounded text-sm md:text-base font-primary bg-white"> { quantity } </h3>
+        <h3 className=" w-10 md:w-20 h-10 mx-1 flex justify-center items-center rounded text-sm md:text-base font-primary bg-white"> { quantity } </h3>
+        <button className=" w-10 h-10 mx-1 rounded hover:text-white bg-white hover:bg-dark-primary scale">
+          <FontAwesomeIcon
+            icon={ faTrashCan }
+          />
+        </button>
       </div>
 
       <div className=" w-full my-4 col-span-3 md:col-span-2 flex justify-center items-center">
