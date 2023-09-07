@@ -20,6 +20,12 @@ a
   cursor: pointer;
 }
 
+:disabled
+{
+  background-color: #F9F9F9;
+  border-radius: 0.25rem 0.25rem 0rem 0rem;
+}
+
 /* Scale */
 .scale
 {

@@ -2,11 +2,19 @@ import Image from "next/image";
 import LottiePlayer from "@components/LottiePlayer";
 //
 import logo from "@images/logo.webp";
-import animation from "@images/signup.json";
+import animation from "@images/profile.json";
+import { type UserType } from "@lib/Interface";
 
 // Page
 export default function Page(): JSX.Element
 {
+  const inputs: UserType =
+  {
+    email: "syed.khizer30@gmail.com",
+    username: "Muhammad Khizer",
+    password: "Shaheer30="
+  };
+
   return (
     <>
       <div className=" w-full grid grid-cols-2 justify-items-center content-center">
@@ -21,12 +29,10 @@ export default function Page(): JSX.Element
             />
           </div>
           <div className=" w-full h-full flex flex-col justify-center items-center">
-            <h1 className=" w-9/12 my-2 text-3xl font-semibold font-secondary"> Sign Up </h1>
+            <h1 className=" w-9/12 my-2 text-3xl font-semibold font-secondary"> Profile </h1>
             <h2 className=" w-9/12 my-2 text-sm font-secondary">
-              If you already have an account
-              <br />
-              You can
-              <a className=" text-primary hover:text-dark-primary font-semibold transition"> Login Here! </a>
+              To Go Back
+              <a className=" text-primary hover:text-dark-primary font-semibold transition"> Click Here! </a>
             </h2>
             <form action="" method="post" target="_self" className=" w-9/12 my-2">
 
@@ -35,7 +41,8 @@ export default function Page(): JSX.Element
                 <input
                   name="email"
                   type="email"
-                  autoFocus
+                  disabled
+                  value={ inputs.email }
                   placeholder=" Enter Your Email"
                   className=" w-full h-8 p-1 text-sm font-medium font-secondary focus:outline-none border-b-2 border-primary focus:border-dark-primary"
                 />
@@ -46,6 +53,8 @@ export default function Page(): JSX.Element
                 <input
                   name="username"
                   type="text"
+                  autoFocus
+                  value={ inputs.username }
                   placeholder=" Enter Your Username"
                   className=" w-full h-8 p-1 text-sm font-medium font-secondary focus:outline-none border-b-2 border-primary focus:border-dark-primary"
                 />
@@ -56,7 +65,7 @@ export default function Page(): JSX.Element
                 <input
                   name="password"
                   type="password"
-                  placeholder=" Enter Your Password"
+                  placeholder=" Enter Your New Password"
                   className=" w-full h-8 p-1 text-sm font-medium font-secondary focus:outline-none border-b-2 border-primary focus:border-dark-primary"
                 />
               </div>
@@ -73,7 +82,7 @@ export default function Page(): JSX.Element
 
               <div className=" my-12 flex justify-center items-center">
                 <button className=" w-full h-12 rounded-3xl text-white text-sm font-secondary bg-primary hover:bg-dark-primary outline-none scale">
-                  Sign Up
+                  Save
                 </button>
               </div>
 
@@ -90,7 +99,7 @@ export default function Page(): JSX.Element
               />
             </div>
             <div className=" w-3/4 h-1/5 flex flex-col justify-start items-start">
-              <h1 className=" my-1 text-white text-4xl font-semibold font-secondary"> Sign Up to BookWorm </h1>
+              <h1 className=" my-1 text-white text-4xl font-semibold font-secondary"> BookWorm's Profile </h1>
               <h1 className=" my-1 text-white text-xl font-secondary"> Pakistan's Biggest Book Store </h1>
             </div>
           </div>

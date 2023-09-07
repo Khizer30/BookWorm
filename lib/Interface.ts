@@ -38,4 +38,12 @@ interface CartItem
   quantity: number;
 }
 
-export type { Children, Radio, HeadlessUI, Book, CartItem };
+// UserType
+interface UserType
+{
+  email: string;
+  username: string;
+  password: string;
+}
+
+export type { Children, Radio, HeadlessUI, Book, CartItem, UserType };
