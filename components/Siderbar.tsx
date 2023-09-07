@@ -49,7 +49,7 @@ export default function Sidebar({ children }: Children): JSX.Element
         <div className=" w-full h-16 md:w-0 p-6 flex md:hidden justify-around items-center">
 
           <Popover className=" relative">
-            <Popover.Button className=" w-36 h-12 rounded text-sm font-primary bg-light-grey scale">
+            <Popover.Button className=" w-36 h-12 rounded text-sm font-primary bg-light-grey outline-none scale">
               Filters
               <FontAwesomeIcon
                 icon={ faCaretDown }
@@ -81,7 +81,7 @@ export default function Sidebar({ children }: Children): JSX.Element
           </Popover>
 
           <Popover className=" relative">
-            <Popover.Button className=" w-36 h-12 rounded text-sm font-primary bg-light-grey scale">
+            <Popover.Button className=" w-36 h-12 rounded text-sm font-primary bg-light-grey outline-none scale">
               Sort
               <FontAwesomeIcon
                 icon={ faCaretDown }

@@ -42,7 +42,7 @@ export default function Navbar(): JSX.Element
   {
     return (
       <span key={ option.value } className=" w-28 h-full flex justify-center items-center">
-        <a className=" hover:text-sm active:text-xs font-primary transition-all"> { option.name } </a>
+        <a className=" font-primary scale"> { option.name } </a>
       </span>
     );
   }
@@ -52,7 +52,7 @@ export default function Navbar(): JSX.Element
   {
     return (
       <span key={ option.value } className=" h-8 px-4 py-1 text-end">
-        <a className=" hover:text-sm active:text-xs font-primary transition-all"> { option.name } </a>
+        <a className=" hover:text-sm active:text-xs font-primary transition-all duration-300"> { option.name } </a>
       </span>
     );
   }
