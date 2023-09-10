@@ -6,8 +6,8 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCartShopping, faUser, faBars } from "@fortawesome/free-solid-svg-icons";
 //
 import { subjects } from "@lib/Filters";
-import logo from "@images/logo.webp";
 import { type Radio } from "@lib/Interface";
+import logo from "@images/logo.webp";
 
 // Navbar
 export default function Navbar(): JSX.Element
@@ -41,7 +41,7 @@ export default function Navbar(): JSX.Element
   function linkMapper(option: Radio): JSX.Element
   {
     return (
-      <span key={ option.value } className=" w-28 h-full flex justify-center items-center">
+      <span className=" w-28 h-full flex justify-center items-center" key={ option.value }>
         <a className=" font-primary scale"> { option.name } </a>
       </span>
     );
@@ -51,7 +51,7 @@ export default function Navbar(): JSX.Element
   function spanMapper(option: Radio): JSX.Element
   {
     return (
-      <span key={ option.value } className=" h-8 px-4 py-1 text-end">
+      <span className=" h-8 px-4 py-1 text-end" key={ option.value }>
         <a className=" hover:text-sm active:text-xs font-primary transition-all duration-300"> { option.name } </a>
       </span>
     );
@@ -71,7 +71,7 @@ export default function Navbar(): JSX.Element
             />
           </div>
 
-          <div className=" w-full h-full hidden md:flex col-span-0 md:col-span-6 justify-center items-center">
+          <div className=" w-full h-full col-span-0 md:col-span-6 hidden md:flex justify-center items-center">
             { subjects.slice(1).map(linkMapper) }
           </div>
 
@@ -102,10 +102,10 @@ export default function Navbar(): JSX.Element
         <Transition
           show={ isOpen }
           className=" flex flex-col"
-          enter=" transition ease-out duration-250 transform opacity-0"
+          enter=" transform opacity-0 transition ease-out duration-250"
           enterFrom=" translate-x-full"
           enterTo=" translate-x-0 opacity-100"
-          leave=" transition ease-in duration-250 transform opacity-100"
+          leave=" transform opacity-100 transition ease-in duration-250"
           leaveFrom=" translate-x-0"
           leaveTo=" translate-x-full opacity-0"
         >

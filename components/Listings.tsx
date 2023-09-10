@@ -12,11 +12,11 @@ interface Props
 // Listings
 export default function Listings({ heading }: Props): JSX.Element
 {
-  // Books Mapper
-  function booksMapper(book: Book): JSX.Element
+  // Book Mapper
+  function bookMapper(book: Book): JSX.Element
   {
     return (
-      <Card { ...book } />
+      <Card { ...book } key={ book.title } />
     );
   }
 
@@ -27,10 +27,10 @@ export default function Listings({ heading }: Props): JSX.Element
           <h1 className=" text-xl font-medium font-secondary"> { heading } </h1>
         </div>
         <div className=" w-full grid grid-cols-2 md:grid-cols-4 justify-items-center content-center">
-          { books.map(booksMapper) }
+          { books.map(bookMapper) }
         </div>
         <div className=" w-full my-2 flex justify-center items-center">
-          <button className=" w-36 h-12 rounded-lg text-sm font-primary bg-light-grey scale">
+          <button className=" w-36 h-12 rounded-lg text-sm font-primary bg-light-grey outline-none scale">
             View Collection
           </button>
         </div>

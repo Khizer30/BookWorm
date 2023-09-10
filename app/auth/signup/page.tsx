@@ -1,6 +1,6 @@
 import Image from "next/image";
-import LottiePlayer from "@components/LottiePlayer";
 //
+import LottiePlayer from "@components/LottiePlayer";
 import logo from "@images/logo.webp";
 import animation from "@images/signup.json";
 
@@ -26,47 +26,47 @@ export default function Page(): JSX.Element
               If you already have an account
               <br />
               You can
-              <a className=" text-primary hover:text-dark-primary font-semibold transition"> Login Here! </a>
+              <a className=" text-primary hover:text-dark-primary font-semibold transition-all"> Login Here! </a>
             </h2>
             <form action="" method="post" target="_self" className=" w-9/12 my-2">
 
-              <div className=" my-7">
+              <div className=" my-8">
                 <h3 className=" text-xs font-secondary"> Email </h3>
                 <input
                   name="email"
                   type="email"
                   autoFocus
-                  placeholder=" Enter Your Email"
+                  placeholder="Enter Your Email"
                   className=" w-full h-8 p-1 text-sm font-medium font-secondary focus:outline-none border-b-2 border-primary focus:border-dark-primary"
                 />
               </div>
 
-              <div className=" my-7">
+              <div className=" my-8">
                 <h3 className=" text-xs font-secondary"> Username </h3>
                 <input
                   name="username"
                   type="text"
-                  placeholder=" Enter Your Username"
+                  placeholder="Enter Your Username"
                   className=" w-full h-8 p-1 text-sm font-medium font-secondary focus:outline-none border-b-2 border-primary focus:border-dark-primary"
                 />
               </div>
 
-              <div className=" my-7">
+              <div className=" my-8">
                 <h3 className=" text-xs font-secondary"> Password </h3>
                 <input
                   name="password"
                   type="password"
-                  placeholder=" Enter Your Password"
+                  placeholder="Enter Your Password"
                   className=" w-full h-8 p-1 text-sm font-medium font-secondary focus:outline-none border-b-2 border-primary focus:border-dark-primary"
                 />
               </div>
 
-              <div className=" my-7">
+              <div className=" my-8">
                 <h3 className=" text-xs font-secondary"> Confirm Password </h3>
                 <input
                   name="repassword"
                   type="password"
-                  placeholder=" Re-Enter Your Password"
+                  placeholder="Re-Enter Your Password"
                   className=" w-full h-8 p-1 text-sm font-medium font-secondary focus:outline-none border-b-2 border-primary focus:border-dark-primary"
                 />
               </div>

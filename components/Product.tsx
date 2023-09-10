@@ -20,18 +20,18 @@ export default function Product({ title, price, description, image }: Book): JSX
 
         <div className=" w-full p-2 col-span-1 flex flex-col justify-between items-center">
 
-          <div className=" w-full mb-4">
+          <div className=" w-full mb-2">
             <h1 className=" w-full text-xl font-medium font-secondary"> { title } </h1>
-            <h3 className=" w-full mt-2 font-primary"> { `Rs ${ price }` } </h3>
-            <hr className=" h-[0.15rem] mt-2" />
+            <h3 className=" w-full my-2 font-primary"> { `Rs ${ price }` } </h3>
+            <hr className=" h-1" />
           </div>
 
           <div className=" w-full my-2">
             <h2 className=" w-full font-medium font-secondary"> Product Description </h2>
-            <h3 className=" w-full mt-2 text-sm font-light font-primary"> { description || "No Description" } </h3>
+            <h3 className=" w-full my-2 text-sm font-light font-primary"> { description || "No Description" } </h3>
           </div>
 
-          <div className=" w-full my-4">
+          <div className=" w-full my-2">
             <h2 className=" w-full font-medium font-secondary"> Quantity </h2>
             <input
               name="quantity"
@@ -40,11 +40,11 @@ export default function Product({ title, price, description, image }: Book): JSX
               max={ 9 }
               required
               value={ 1 }
-              className=" w-full md:w-36 h-10 mt-2 p-4 rounded text-center md:text-start text-sm font-primary input"
+              className=" w-full md:w-36 h-10 my-2 p-4 rounded text-center md:text-start text-sm font-primary input"
             />
           </div>
 
-          <div className=" w-full mt-4">
+          <div className=" w-full mt-2">
             <button className=" w-full md:w-36 h-12 rounded text-sm text-white font-primary bg-dark-primary scale">
               Add to Cart
             </button>

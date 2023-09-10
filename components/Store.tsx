@@ -10,23 +10,21 @@ export default function Store(): JSX.Element
 {
   const items: Book[] = [...books, ...books, ...books];
 
-  // Books Mapper
-  function booksMapper(book: Book): JSX.Element
+  // Book Mapper
+  function bookMapper(book: Book): JSX.Element
   {
     return (
-      <Card { ...book } />
+      <Card { ...book } key={ book.title } />
     );
   }
 
   return (
     <>
       <div className=" w-full p-6 flex flex-col justify-center items-center">
-
         <div className=" w-full grid grid-cols-2 md:grid-cols-4 justify-items-center content-center">
-          { items.slice(3).map(booksMapper) }
+          { items.slice(3).map(bookMapper) }
         </div>
-
-        <div className=" w-full my-3 flex justify-center items-center">
+        <div className=" w-full my-2 flex justify-center items-center">
           <button className=" w-10 h-10 mx-1 rounded-md hover:text-white bg-light-grey hover:bg-dark-primary scale">
             <FontAwesomeIcon
               icon={ faAngleLeft }
@@ -38,7 +36,6 @@ export default function Store(): JSX.Element
             />
           </button>
         </div>
-
       </div>
     </>
   );

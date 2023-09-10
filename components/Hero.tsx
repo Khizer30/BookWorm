@@ -16,7 +16,7 @@ export default function Hero(): JSX.Element
           className=" h-full col-span-1 md:col-span-2 order-2 md:order-1"
         />
 
-        <div className=" min-h-[20rem] p-6 col-span-1 order-1 md:order-2 flex flex-col justify-center items-center md:bg-light-grey">
+        <div className=" p-6 col-span-1 order-1 md:order-2 flex flex-col justify-center items-center md:bg-light-grey">
           <h1 className=" my-2 text-xl font-medium font-secondary">
             Welcome to Book Worm, your one-stop destination for a world of knowledge and spiritual enrichment.
           </h1>
@@ -24,7 +24,7 @@ export default function Hero(): JSX.Element
             At Book Worm, we specialize in curating an extensive collection of Islamic books that cater to both curious minds and devout souls.
           </h2>
           <div className=" w-full my-2 flex justify-center items-center">
-            <button className=" w-36 h-12 rounded-lg text-sm font-primary bg-light-grey md:bg-white scale">
+            <button className=" w-36 h-12 rounded-lg text-sm font-primary bg-light-grey md:bg-white outline-none scale">
               View Collection
             </button>
           </div>

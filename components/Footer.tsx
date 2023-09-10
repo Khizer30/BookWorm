@@ -1,8 +1,8 @@
 import Image from "next/image";
 //
 import { subjects } from "@lib/Filters";
-import logo from "@images/logo.webp";
 import { type Radio } from "@lib/Interface";
+import logo from "@images/logo.webp";
 
 // Footer
 export default function Footer(): JSX.Element
@@ -11,7 +11,7 @@ export default function Footer(): JSX.Element
   function linkMapper(option: Radio): JSX.Element
   {
     return (
-      <a key={ option.value } className=" my-1 text-white text-sm font-secondary scale"> { option.name } </a>
+      <a className=" my-1 text-sm text-white font-secondary scale" key={ option.value }> { option.name } </a>
     );
   }
 
@@ -30,14 +30,14 @@ export default function Footer(): JSX.Element
           </div>
 
           <div className=" w-full h-full col-span-1 flex flex-col justify-center items-start">
-            <h6 className=" my-1 text-white text-xl font-secondary"> Categories </h6>
+            <h6 className=" my-1 text-xl text-white font-secondary"> Categories </h6>
             { subjects.slice(1).map(linkMapper) }
           </div>
 
         </div>
         <div className=" w-full mt-8 flex flex-col justify-center items-center">
           <hr className=" w-11/12 h-1 rounded-full bg-primary" />
-          <span className=" w-11/12 py-4 text-white text-sm font-secondary"> Copyright 2022 Book Worm LTD </span>
+          <span className=" w-11/12 my-4 text-sm text-white font-secondary"> Copyright 2022 Book Worm LTD </span>
         </div>
       </div>
     </>

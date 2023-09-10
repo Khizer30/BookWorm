@@ -110,17 +110,17 @@ export default function Sidebar({ children }: Children): JSX.Element
 
         <div className=" w-0 md:w-80 min-h-full p-6 hidden md:flex flex-col justify-start items-center">
 
-          <RadioGroup value={ subject } onChange={ setSubject } className=" w-full mb-3">
+          <RadioGroup value={ subject } onChange={ setSubject } className=" w-full mb-4">
             <RadioGroup.Label as="h5" className=" px-2 font-semibold font-secondary"> Subject </RadioGroup.Label>
             { subjects.map(radioMapper) }
           </RadioGroup>
 
-          <RadioGroup value={ price } onChange={ setPrice } className=" w-full mb-3">
+          <RadioGroup value={ price } onChange={ setPrice } className=" w-full mb-4">
             <RadioGroup.Label as="h5" className=" px-2 font-semibold font-secondary"> Price </RadioGroup.Label>
             { prices.map(radioMapper) }
           </RadioGroup>
 
-          <RadioGroup value={ sort } onChange={ setSort } className=" w-full mb-3">
+          <RadioGroup value={ sort } onChange={ setSort } className=" w-full mb-4">
             <RadioGroup.Label as="h5" className=" px-2 font-semibold font-secondary"> Sort </RadioGroup.Label>
             { sorts.map(radioMapper) }
           </RadioGroup>

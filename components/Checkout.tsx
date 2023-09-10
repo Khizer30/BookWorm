@@ -42,11 +42,11 @@ export default function Checkout(): JSX.Element
     setTotal(temp);
   }, []);
 
-  // Items Mapper
-  function itemsMapper(item: CartItem): JSX.Element
+  // Item Mapper
+  function itemMapper(item: CartItem): JSX.Element
   {
     return (
-      <Item { ...item } />
+      <Item { ...item } key={ item.title } />
     );
   }
 
@@ -60,17 +60,17 @@ export default function Checkout(): JSX.Element
           { (items.length === 0) &&
             <div className=" w-full h-full my-2 col-span-12 flex flex-col justify-center items-center">
               <h3 className=" my-2 text-xl font-medium font-secondary"> Your Cart is Empty </h3>
-              <button className=" w-full md:w-36 h-12 my-2 rounded text-sm font-primary bg-white scale">
+              <button className=" w-36 h-12 my-2 rounded text-sm font-primary bg-white outline-none scale">
                 View Collection
               </button>
             </div>
           }
-          { items.map(itemsMapper) }
+          { items.map(itemMapper) }
         </div>
         { (items.length !== 0) &&
           <div className=" w-full flex flex-col justify-center items-end">
             <h2 className=" md:text-lg font-medium font-secondary"> { `Subtotal Rs ${ total }` } </h2>
-            <button className=" w-full md:w-36 h-12 my-2 rounded text-sm text-white font-primary bg-dark-primary scale">
+            <button className=" w-full md:w-36 h-12 my-2 rounded text-sm text-white font-primary bg-dark-primary outline-none scale">
               Checkout
             </button>
           </div>
@@ -99,8 +99,8 @@ function Item({ title, price, image, quantity }: CartItem): JSX.Element
       </div>
 
       <div className=" w-full my-4 col-span-3 md:col-span-2 flex justify-center items-center">
-        <h3 className=" w-10 md:w-20 h-10 mx-1 flex justify-center items-center rounded text-sm md:text-base font-primary bg-white"> { quantity } </h3>
-        <button className=" w-10 h-10 mx-1 rounded hover:text-white bg-white hover:bg-dark-primary scale">
+        <h3 className=" w-10 md:w-20 h-10 mr-1 flex justify-center items-center rounded text-sm md:text-base font-primary bg-white"> { quantity } </h3>
+        <button className=" w-10 h-10 ml-1 rounded hover:text-white bg-white hover:bg-dark-primary scale">
           <FontAwesomeIcon
             icon={ faTrashCan }
           />

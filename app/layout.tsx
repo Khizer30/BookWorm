@@ -2,8 +2,8 @@ import { type Metadata } from "next";
 import "@fontsource-variable/epilogue";
 import "@fontsource-variable/montserrat";
 //
-import "./globals.css";
 import { type Children } from "@lib/Interface";
+import "./globals.css";
 
 // Metadata
 export const metadata: Metadata =
