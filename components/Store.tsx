@@ -1,14 +1,11 @@
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faAngleLeft, faAngleRight } from "@fortawesome/free-solid-svg-icons";
 //
 import Card from "@components/Card";
-import books from "@lib/Books";
+import { getBooks } from "@lib/DB";
 import { type Book } from "@lib/Interface";
 
-// Store
-export default function Store(): JSX.Element
+export default async function Store(): Promise<JSX.Element>
 {
-  const items: Book[] = [...books, ...books, ...books];
+  const items: Book[] = JSON.parse(await getBooks());
 
   // Book Mapper
   function bookMapper(book: Book): JSX.Element
@@ -20,23 +17,14 @@ export default function Store(): JSX.Element
 
   return (
     <>
-      <div className=" w-full p-6 flex flex-col justify-center items-center">
+      { (items.length === 0) &&
+        <h3 className=" text-3xl font-medium font-secondary"> Store is Empty </h3>
+      }
+      { (items.length !== 0) &&
         <div className=" w-full grid grid-cols-2 md:grid-cols-4 justify-items-center content-center">
-          { items.slice(3).map(bookMapper) }
+          { items.map(bookMapper) }
         </div>
-        <div className=" w-full my-2 flex justify-center items-center">
-          <button className=" w-10 h-10 mx-1 rounded-md hover:text-white bg-light-grey hover:bg-dark-primary scale">
-            <FontAwesomeIcon
-              icon={ faAngleLeft }
-            />
-          </button>
-          <button className=" w-10 h-10 mx-1 rounded-md hover:text-white bg-light-grey hover:bg-dark-primary scale">
-            <FontAwesomeIcon
-              icon={ faAngleRight }
-            />
-          </button>
-        </div>
-      </div>
+      }
     </>
   );
 }

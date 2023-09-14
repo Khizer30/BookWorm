@@ -65,3 +65,32 @@ a
   border: 1px solid #2A254B;
   box-shadow: 2px 2px #2A254B;
 }
+
+/* Loader */
+#loader
+{
+  width: 7rem;
+  height: 7rem;
+  border-radius: 100%;
+  background: #2A254B;
+  background: linear-gradient(90deg, #2A254B 0%, #4E4D93 50%, #F9F9F9 100%);
+  animation: Grow 1.5s ease-in-out infinite;
+}
+
+@keyframes Grow
+{
+  0%
+  {
+    transform: scale(1);
+  }
+
+  50%
+  {
+    transform: scale(1.5);
+  }
+
+  100%
+  {
+    transform: scale(1);
+  }
+}

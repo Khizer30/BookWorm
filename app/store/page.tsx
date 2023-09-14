@@ -21,6 +21,7 @@ export default function Page(): JSX.Element
       <Navbar />
       <Header />
       <Sidebar>
+        { /* @ts-expect-error */ }
         <Store />
       </Sidebar>
       <Footer />

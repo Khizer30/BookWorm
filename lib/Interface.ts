@@ -26,7 +26,7 @@ interface Book
   title: string;
   price: number;
   description?: string;
-  image: StaticImageData;
+  image: StaticImageData | string;
 }
 
 // Cart Item
@@ -34,7 +34,7 @@ interface CartItem
 {
   title: string;
   price: number;
-  image: StaticImageData;
+  image: StaticImageData | string;
   quantity: number;
 }
 

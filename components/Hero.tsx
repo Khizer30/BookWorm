@@ -13,6 +13,7 @@ export default function Hero(): JSX.Element
           src={ heroImg }
           alt="Cover Image"
           draggable="false"
+          priority
           className=" h-full col-span-1 md:col-span-2 order-2 md:order-1"
         />
 

@@ -127,7 +127,7 @@ export default function Sidebar({ children }: Children): JSX.Element
 
         </div>
 
-        <div className=" w-full min-h-full">
+        <div className=" w-full min-h-screen p-6 flex flex-col justify-center items-center">
           { children }
         </div>
 

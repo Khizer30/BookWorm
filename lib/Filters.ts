@@ -25,8 +25,8 @@ const subjects: Radio[] =
       value: "kalam"
     },
     {
-      name: "Tasawwuf",
-      value: "tasawwuf"
+      name: "Iqbaliyat",
+      value: "iqbaliyat"
     }
   ];
 
@@ -38,16 +38,24 @@ const prices: Radio[] =
       value: Infinity
     },
     {
-      name: "0 - 999",
-      value: 999
+      name: "0 - 499",
+      value: 500
     },
     {
-      name: "1000 - 1999",
-      value: 1999
+      name: "500 - 999",
+      value: 1000
     },
     {
-      name: "2000 - 2999",
-      value: 2999
+      name: "1000 - 1499",
+      value: 1500
+    },
+    {
+      name: "1500 - 1999",
+      value: 2000
+    },
+    {
+      name: "2000 - 2499",
+      value: 2500
     }
   ];
 

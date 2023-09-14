@@ -12,6 +12,7 @@ export default function Header(): JSX.Element
           src={ headerImg }
           alt="Header Image"
           draggable="false"
+          priority
           className=" w-full h-28 md:h-40"
         />
       </div>

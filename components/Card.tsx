@@ -11,6 +11,8 @@ export default function Card({ title, price, image }: Book): JSX.Element
         <Image
           src={ image }
           alt={ title }
+          width={ 250 }
+          height={ 400 }
           draggable="false"
           className=" w-28 md:w-40 rounded"
         />
