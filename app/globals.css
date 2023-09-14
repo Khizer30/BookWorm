@@ -66,31 +66,77 @@ a
   box-shadow: 2px 2px #2A254B;
 }
 
-/* Loader */
-#loader
+/* Loading */
+.Corner
 {
-  width: 7rem;
-  height: 7rem;
-  border-radius: 100%;
-  background: #2A254B;
-  background: linear-gradient(90deg, #2A254B 0%, #4E4D93 50%, #F9F9F9 100%);
-  animation: Grow 1.5s ease-in-out infinite;
+  animation: Bar1 1.25s ease-in-out infinite;
 }
 
-@keyframes Grow
+.Middle
+{
+  animation: Bar2 1.25s ease-in-out infinite;
+}
+
+.Center
+{
+  animation: Bar3 1.25s ease-in-out infinite;
+}
+
+@keyframes Bar1
 {
   0%
   {
-    transform: scale(1);
+    transform: translateY(0%)
   }
 
   50%
   {
-    transform: scale(1.5);
+    transform: translateY(-15%)
   }
 
   100%
   {
-    transform: scale(1);
+    transform: translateY(0%)
+  }
+}
+
+@keyframes Bar2
+{
+  0%
+  {
+    transform: translateY(0%)
+  }
+
+  50%
+  {
+    transform: translateY(15%)
+  }
+
+  100%
+  {
+    transform: translateY(0%)
+  }
+}
+
+@keyframes Bar3
+{
+  0%
+  {
+    transform: translateY(0%)
+  }
+
+  25%
+  {
+    transform: translateY(-10%)
+  }
+
+  75%
+  {
+    transform: translateY(10%)
+  }
+
+  100%
+  {
+    transform: translateY(0%)
   }
 }
