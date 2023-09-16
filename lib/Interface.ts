@@ -23,6 +23,7 @@ interface HeadlessUI
 // Book
 interface Book
 {
+  _id: string;
   title: string;
   price: number;
   description?: string;
@@ -46,4 +47,19 @@ interface UserType
   password: string;
 }
 
-export type { Children, Radio, HeadlessUI, Book, CartItem, UserType };
+// Store Initial
+interface StoreInitial
+{
+  pages: number[];
+  books: Book[];
+}
+
+// Store Menu
+interface StoreMenu
+{
+  subject: string;
+  price: number;
+  sort: number;
+}
+
+export type { Children, Radio, HeadlessUI, Book, CartItem, UserType, StoreInitial, StoreMenu };

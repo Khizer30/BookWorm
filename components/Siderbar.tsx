@@ -5,14 +5,19 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCaretDown } from "@fortawesome/free-solid-svg-icons";
 //
 import { subjects, prices, sorts } from "@lib/Filters";
-import { type Children, type Radio, type HeadlessUI } from "@lib/Interface";
+import StoreContext from "@lib/StoreContext";
+import { type Children, type Radio, type HeadlessUI, type StoreMenu } from "@lib/Interface";
 
 // Sidebar
 export default function Sidebar({ children }: Children): JSX.Element
 {
-  const [subject, setSubject] = useState<string>(subjects[0].value as string);
-  const [price, setPrice] = useState<number>(prices[0].value as number);
-  const [sort, setSort] = useState<number>(sorts[0].value as number);
+  const [filters, setFilters] = useState<StoreMenu>({ subject: subjects[0].value as string, price: prices[0].value as number, sort: sorts[0].value as number });
+
+  // Set Filter
+  function setFilter(name: string, value: string | number): void
+  {
+    setFilters((x: StoreMenu) => ({ ...x, [name]: value }));
+  }
 
   // Radio Mapper
   function radioMapper(option: Radio): JSX.Element
@@ -66,12 +71,12 @@ export default function Sidebar({ children }: Children): JSX.Element
             >
               <Popover.Panel className=" w-36 mt-2 pb-2 z-10 flex flex-col justify-center items-start absolute rounded bg-light-grey">
 
-                <RadioGroup value={ subject } onChange={ setSubject } className=" w-full">
+                <RadioGroup value={ filters.subject } onChange={ (value: string) => setFilter("subject", value) } className=" w-full">
                   <RadioGroup.Label as="h5" className=" p-2 text-sm font-semibold font-secondary"> Subject </RadioGroup.Label>
                   { subjects.map(popoverMapper) }
                 </RadioGroup>
 
-                <RadioGroup value={ price } onChange={ setPrice } className=" w-full">
+                <RadioGroup value={ filters.price } onChange={ (value: number) => setFilter("price", value) } className=" w-full">
                   <RadioGroup.Label as="h5" className=" p-2 text-sm font-semibold font-secondary"> Price </RadioGroup.Label>
                   { prices.map(popoverMapper) }
                 </RadioGroup>
@@ -98,7 +103,7 @@ export default function Sidebar({ children }: Children): JSX.Element
             >
               <Popover.Panel className=" w-36 mt-2 py-2 z-10 flex flex-col justify-center items-start absolute rounded bg-light-grey">
 
-                <RadioGroup value={ sort } onChange={ setSort } className=" w-full">
+                <RadioGroup value={ filters.sort } onChange={ (value: number) => setFilter("sort", value) } className=" w-full">
                   { sorts.map(popoverMapper) }
                 </RadioGroup>
 
@@ -110,25 +115,27 @@ export default function Sidebar({ children }: Children): JSX.Element
 
         <div className=" w-0 md:w-80 min-h-full p-6 hidden md:flex flex-col justify-start items-center">
 
-          <RadioGroup value={ subject } onChange={ setSubject } className=" w-full mb-4">
+          <RadioGroup value={ filters.subject } onChange={ (value: string) => setFilter("subject", value) } className=" w-full mb-4">
             <RadioGroup.Label as="h5" className=" px-2 font-semibold font-secondary"> Subject </RadioGroup.Label>
             { subjects.map(radioMapper) }
           </RadioGroup>
 
-          <RadioGroup value={ price } onChange={ setPrice } className=" w-full mb-4">
+          <RadioGroup value={ filters.price } onChange={ (value: number) => setFilter("price", value) } className=" w-full mb-4">
             <RadioGroup.Label as="h5" className=" px-2 font-semibold font-secondary"> Price </RadioGroup.Label>
             { prices.map(radioMapper) }
           </RadioGroup>
 
-          <RadioGroup value={ sort } onChange={ setSort } className=" w-full mb-4">
+          <RadioGroup value={ filters.sort } onChange={ (value: number) => setFilter("sort", value) } className=" w-full mb-4">
             <RadioGroup.Label as="h5" className=" px-2 font-semibold font-secondary"> Sort </RadioGroup.Label>
             { sorts.map(radioMapper) }
           </RadioGroup>
 
         </div>
 
-        <div className=" w-full min-h-screen p-6 flex flex-col justify-center items-center">
-          { children }
+        <div className=" w-full min-h-screen p-6 flex flex-col justify-between items-center">
+          <StoreContext.Provider value={ filters }>
+            { children }
+          </StoreContext.Provider>
         </div>
 
       </div>

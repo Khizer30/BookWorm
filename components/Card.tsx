@@ -14,6 +14,7 @@ export default function Card({ title, price, image }: Book): JSX.Element
           width={ 250 }
           height={ 400 }
           draggable="false"
+          placeholder="empty"
           className=" w-28 md:w-40 rounded"
         />
         <h3 className=" w-full h-full mt-2 text-sm md:text-base font-medium font-secondary"> { title } </h3>

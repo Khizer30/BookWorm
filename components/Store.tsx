@@ -1,11 +1,43 @@
+"use client";
+import { useState, useEffect } from "react";
+import { RadioGroup } from "@headlessui/react";
 //
 import Card from "@components/Card";
-import { getBooks } from "@lib/DB";
-import { type Book } from "@lib/Interface";
+import { useStoreContext } from "@lib/StoreContext";
+import { type HeadlessUI, type Book, type StoreInitial } from "@lib/Interface";
 
-export default async function Store(): Promise<JSX.Element>
+// Store
+export default function Store(storeInitialData: StoreInitial): JSX.Element
 {
-  const items: Book[] = JSON.parse(await getBooks());
+  const [books, setBooks] = useState<Book[]>(storeInitialData.books);
+  const [page, setPage] = useState<number>(storeInitialData.pages[0]);
+  const { subject, price, sort } = useStoreContext();
+
+  // Change Books
+  useEffect(() =>
+  {
+    getBooks();
+  }, [page, subject, price, sort]);
+
+  // Get Books
+  async function getBooks(): Promise<void>
+  {
+    const url: string = `/api/books?page=${ page }&subject=${ subject }&price=${ price }&sort=${ sort }`;
+
+    const response: Response = await fetch(url,
+      {
+        mode: "same-origin",
+        cache: "force-cache",
+        method: "GET",
+        headers:
+        {
+          "Content-Type": "application/json"
+        },
+      });
+
+    const result: Book[] = await response.json();
+    setBooks(result);
+  }
 
   // Book Mapper
   function bookMapper(book: Book): JSX.Element
@@ -15,15 +47,34 @@ export default async function Store(): Promise<JSX.Element>
     );
   }
 
+  // Pagination Mapper
+  function paginationMapper(x: number): JSX.Element
+  {
+    return (
+      <RadioGroup.Option value={ x } key={ x }>
+        { ({ checked }: HeadlessUI) => (
+          <h6 className={ ` w-10 h-10 mx-1 flex justify-center items-center rounded text-sm font-primary cursor-pointer scale ${ checked ? ` text-white bg-dark-primary` : ` hover:text-white bg-light-grey hover:bg-primary` }` }>
+            { x }
+          </h6>
+        ) }
+      </RadioGroup.Option>
+    );
+  }
+
   return (
     <>
-      { (items.length === 0) &&
+      { (books.length === 0) &&
         <h3 className=" text-3xl font-medium font-secondary"> Store is Empty </h3>
       }
-      { (items.length !== 0) &&
-        <div className=" w-full grid grid-cols-2 md:grid-cols-4 justify-items-center content-center">
-          { items.map(bookMapper) }
-        </div>
+      { (books.length !== 0) &&
+        <>
+          <div className=" w-full h-[90%] grid grid-cols-2 md:grid-cols-4 justify-items-center content-start">
+            { books.map(bookMapper) }
+          </div>
+          <RadioGroup value={ page } onChange={ setPage } className=" w-full h-[10%] flex justify-center items-end">
+            { storeInitialData.pages.map(paginationMapper) }
+          </RadioGroup>
+        </>
       }
     </>
   );

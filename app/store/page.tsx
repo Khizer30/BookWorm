@@ -5,6 +5,8 @@ import Header from "@components/Header";
 import Sidebar from "@components/Siderbar";
 import Store from "@components/Store";
 import Footer from "@components/Footer";
+import { startStore } from "@lib/DB";
+import { type StoreInitial } from "@lib/Interface";
 
 // Metadata
 export const metadata: Metadata =
@@ -14,15 +16,16 @@ export const metadata: Metadata =
 };
 
 // Page
-export default function Page(): JSX.Element
+export default async function Page(): Promise<JSX.Element>
 {
+  const storeInitialData: StoreInitial = await startStore();
+
   return (
     <>
       <Navbar />
       <Header />
       <Sidebar>
-        { /* @ts-expect-error */ }
-        <Store />
+        <Store { ...storeInitialData } />
       </Sidebar>
       <Footer />
     </>
