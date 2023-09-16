@@ -25,7 +25,7 @@ export default function Store(storeInitialData: BooksResponse): JSX.Element
     }
     else
     {
-      getBooks();
+      getBooks(page);
     }
   }, [page, sort]);
 
@@ -39,14 +39,14 @@ export default function Store(storeInitialData: BooksResponse): JSX.Element
     else
     {
       setPage(pages[0]);
-      getBooks();
+      getBooks(pages[0]);
     }
   }, [subject, price]);
 
   // Get Books
-  async function getBooks(): Promise<void>
+  async function getBooks(x: number): Promise<void>
   {
-    const url: string = `/api/books?page=${ page }&subject=${ subject }&price=${ price }&sort=${ sort }`;
+    const url: string = `/api/books?page=${ x }&subject=${ subject }&price=${ price }&sort=${ sort }`;
 
     const response: Response = await fetch(url,
       {
