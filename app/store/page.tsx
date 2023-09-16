@@ -6,7 +6,7 @@ import Sidebar from "@components/Siderbar";
 import Store from "@components/Store";
 import Footer from "@components/Footer";
 import { startStore } from "@lib/DB";
-import { type StoreInitial } from "@lib/Interface";
+import { type BooksResponse } from "@lib/Interface";
 
 // Metadata
 export const metadata: Metadata =
@@ -18,7 +18,7 @@ export const metadata: Metadata =
 // Page
 export default async function Page(): Promise<JSX.Element>
 {
-  const storeInitialData: StoreInitial = await startStore();
+  const storeInitialData: BooksResponse = await startStore();
 
   return (
     <>

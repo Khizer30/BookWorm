@@ -1,23 +1,47 @@
 "use client";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef, type MutableRefObject } from "react";
 import { RadioGroup } from "@headlessui/react";
 //
 import Card from "@components/Card";
 import { useStoreContext } from "@lib/StoreContext";
-import { type HeadlessUI, type Book, type StoreInitial } from "@lib/Interface";
+import { type HeadlessUI, type Book, type BooksResponse } from "@lib/Interface";
 
 // Store
-export default function Store(storeInitialData: StoreInitial): JSX.Element
+export default function Store(storeInitialData: BooksResponse): JSX.Element
 {
   const [books, setBooks] = useState<Book[]>(storeInitialData.books);
+  const [pages, setPages] = useState<number[]>(storeInitialData.pages);
   const [page, setPage] = useState<number>(storeInitialData.pages[0]);
   const { subject, price, sort } = useStoreContext();
+  const isInitialMount1: MutableRefObject<boolean> = useRef<boolean>(true);
+  const isInitialMount2: MutableRefObject<boolean> = useRef<boolean>(true);
 
-  // Change Books
+  // Reset Page
   useEffect(() =>
   {
-    getBooks();
-  }, [page, subject, price, sort]);
+    if (isInitialMount1.current)
+    {
+      isInitialMount1.current = false;
+    }
+    else
+    {
+      getBooks();
+    }
+  }, [page, sort]);
+
+  // Not Reset Page
+  useEffect(() =>
+  {
+    if (isInitialMount2.current)
+    {
+      isInitialMount2.current = false;
+    }
+    else
+    {
+      setPage(pages[0]);
+      getBooks();
+    }
+  }, [subject, price]);
 
   // Get Books
   async function getBooks(): Promise<void>
@@ -34,9 +58,10 @@ export default function Store(storeInitialData: StoreInitial): JSX.Element
           "Content-Type": "application/json"
         },
       });
+    const result: BooksResponse = await response.json();
 
-    const result: Book[] = await response.json();
-    setBooks(result);
+    setBooks(result.books);
+    setPages(result.pages);
   }
 
   // Book Mapper
@@ -64,7 +89,9 @@ export default function Store(storeInitialData: StoreInitial): JSX.Element
   return (
     <>
       { (books.length === 0) &&
-        <h3 className=" text-3xl font-medium font-secondary"> Store is Empty </h3>
+        <div className=" w-full h-screen flex justify-center items-center">
+          <h3 className=" text-3xl font-medium font-secondary"> Store is Empty </h3>
+        </div>
       }
       { (books.length !== 0) &&
         <>
@@ -72,7 +99,7 @@ export default function Store(storeInitialData: StoreInitial): JSX.Element
             { books.map(bookMapper) }
           </div>
           <RadioGroup value={ page } onChange={ setPage } className=" w-full h-[10%] flex justify-center items-end">
-            { storeInitialData.pages.map(paginationMapper) }
+            { pages.map(paginationMapper) }
           </RadioGroup>
         </>
       }

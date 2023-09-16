@@ -56,6 +56,10 @@ const prices: Radio[] =
     {
       name: "2000 - 2499",
       value: 2500
+    },
+    {
+      name: "2500 - 2999",
+      value: 3000
     }
   ];
 
@@ -68,7 +72,7 @@ const sorts: Radio[] =
     },
     {
       name: "Descending",
-      value: 0
+      value: -1
     }
   ];
 

@@ -28,6 +28,7 @@ interface Book
   price: number;
   description?: string;
   image: StaticImageData | string;
+  tags: string[];
 }
 
 // Cart Item
@@ -47,11 +48,11 @@ interface UserType
   password: string;
 }
 
-// Store Initial
-interface StoreInitial
+// Books Response
+interface BooksResponse
 {
-  pages: number[];
   books: Book[];
+  pages: number[];
 }
 
 // Store Menu
@@ -62,4 +63,4 @@ interface StoreMenu
   sort: number;
 }
 
-export type { Children, Radio, HeadlessUI, Book, CartItem, UserType, StoreInitial, StoreMenu };
+export type { Children, Radio, HeadlessUI, Book, CartItem, UserType, BooksResponse, StoreMenu };
