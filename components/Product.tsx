@@ -1,6 +1,7 @@
 import Image from "next/image";
 //
 import { type Book } from "@lib/Interface";
+import errorImg from "@images/error.webp";
 
 // Product
 export default function Product({ title, price, description, image }: Book): JSX.Element
@@ -11,7 +12,7 @@ export default function Product({ title, price, description, image }: Book): JSX
 
         <div className=" w-full p-2 col-span-1 flex justify-center items-center">
           <Image
-            src={ image }
+            src={ image || errorImg }
             alt={ title }
             draggable="false"
             className=" w-40 md:w-48 rounded"
