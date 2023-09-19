@@ -27,6 +27,7 @@ interface Book
   title: string;
   price: number;
   description?: string;
+  authors: string[];
   image: StaticImageData | string;
   tags: string[];
 }

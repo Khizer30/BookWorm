@@ -1,8 +1,16 @@
 import Image from "next/image";
+import { type Metadata } from "next";
 //
 import LottiePlayer from "@components/LottiePlayer";
 import logo from "@images/logo.webp";
 import animation from "@images/signup.json";
+
+// Metadata
+export const metadata: Metadata =
+{
+  title: "Sign Up | Book Worm",
+  keywords: ["Book Worm", "Sign Up"]
+};
 
 // Page
 export default function Page(): JSX.Element

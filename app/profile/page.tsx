@@ -1,9 +1,17 @@
 import Image from "next/image";
+import { type Metadata } from "next";
 //
 import LottiePlayer from "@components/LottiePlayer";
 import { type UserType } from "@lib/Interface";
 import logo from "@images/logo.webp";
 import animation from "@images/profile.json";
+
+// Metadata
+export const metadata: Metadata =
+{
+  title: "Profile | Book Worm",
+  keywords: ["Book Worm", "Profile"]
+};
 
 // Page
 export default function Page(): JSX.Element

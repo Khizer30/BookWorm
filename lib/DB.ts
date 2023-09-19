@@ -26,4 +26,17 @@ async function startStore(): Promise<BooksResponse>
   return { books: books, pages: pages };
 }
 
-export { startStore };
+// Get Product
+async function getProduct(id: string): Promise<Book | null>
+{
+  const client: MongoClient = await startClient();
+  const collection: Collection<Book> = client.db("bookworm").collection<Book>("books");
+
+  const book: Book | null = await collection.findOne({ _id: id });
+
+  await client.close();
+
+  return book;
+}
+
+export { startStore, getProduct };
