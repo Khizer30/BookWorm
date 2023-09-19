@@ -26,12 +26,24 @@ export default function Product({ title, price, description, image }: Book): JSX
             <hr className=" h-1" />
           </div>
 
-          <div className=" w-full my-2">
+          <div className=" w-full my-1">
             <h2 className=" w-full font-medium font-secondary"> Product Description </h2>
             <h3 className=" w-full my-2 text-sm font-light font-primary"> { description || "No Description" } </h3>
           </div>
 
-          <div className=" w-full my-2">
+          <div className=" w-full my-1">
+            <h2 className=" w-full font-medium font-secondary"> Author </h2>
+            <h3 className=" w-full my-2 text-sm font-light font-primary"> Muhammad Iqbal </h3>
+          </div>
+
+          <div className=" w-full my-1">
+            <h2 className=" w-full font-medium font-secondary"> Tags </h2>
+            <div className=" w-full my-2 flex justify-start items-center">
+              <h4 className=" mr-2 px-4 py-1 rounded text-xs font-secondary bg-white"> QURAN </h4>
+            </div>
+          </div>
+
+          <div className=" w-full my-1">
             <h2 className=" w-full font-medium font-secondary"> Quantity </h2>
             <input
               name="quantity"
