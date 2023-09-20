@@ -1,22 +1,25 @@
 "use client";
 import { useState, useEffect, useRef, type MutableRefObject } from "react";
+import { useSearchParams } from "next/navigation";
 import { RadioGroup } from "@headlessui/react";
 //
 import Card from "@components/Card";
+import Animation from "@components/Animation";
 import { useStoreContext } from "@lib/StoreContext";
 import { type HeadlessUI, type Book, type BooksResponse } from "@lib/Interface";
 
 // Store
 export default function Store(storeInitialData: BooksResponse): JSX.Element
 {
-  const [books, setBooks] = useState<Book[]>(storeInitialData.books);
+  const param: string | null = useSearchParams().get("subject");
+  const [books, setBooks] = useState<Book[]>(param ? [] : storeInitialData.books);
   const [pages, setPages] = useState<number[]>(storeInitialData.pages);
   const [page, setPage] = useState<number>(storeInitialData.pages[0]);
   const { subject, price, sort } = useStoreContext();
   const isInitialMount1: MutableRefObject<boolean> = useRef<boolean>(true);
   const isInitialMount2: MutableRefObject<boolean> = useRef<boolean>(true);
 
-  // Reset Page
+  // Not Reset Current Page
   useEffect(() =>
   {
     if (isInitialMount1.current)
@@ -29,12 +32,17 @@ export default function Store(storeInitialData: BooksResponse): JSX.Element
     }
   }, [page, sort]);
 
-  // Not Reset Page
+  // Reset Current Page
   useEffect(() =>
   {
     if (isInitialMount2.current)
     {
       isInitialMount2.current = false;
+
+      if (param)
+      {
+        getBooks(pages[0]);
+      }
     }
     else
     {
@@ -90,7 +98,7 @@ export default function Store(storeInitialData: BooksResponse): JSX.Element
     <>
       { (books.length === 0) &&
         <div className=" w-full h-screen flex justify-center items-center">
-          <h3 className=" text-3xl font-medium font-secondary"> Store is Empty </h3>
+          <Animation />
         </div>
       }
       { (books.length !== 0) &&

@@ -1,7 +1,7 @@
-import { type Metadata } from "next";
 import LottiePlayer from "@components/LottiePlayer";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faRightLong } from "@fortawesome/free-solid-svg-icons";
+import { type Metadata } from "next";
 //
 import animation from "@images/notfound.json";
 

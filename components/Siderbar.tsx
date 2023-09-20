@@ -1,5 +1,6 @@
 "use client";
 import { useState } from "react";
+import { useSearchParams } from "next/navigation";
 import { RadioGroup, Popover, Transition } from "@headlessui/react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCaretDown } from "@fortawesome/free-solid-svg-icons";
@@ -11,7 +12,7 @@ import { type Children, type Radio, type HeadlessUI, type StoreMenu } from "@lib
 // Sidebar
 export default function Sidebar({ children }: Children): JSX.Element
 {
-  const [filters, setFilters] = useState<StoreMenu>({ subject: subjects[0].value as string, price: prices[0].value as number, sort: sorts[0].value as number });
+  const [filters, setFilters] = useState<StoreMenu>({ subject: useSearchParams().get("subject") || subjects[0].value as string, price: prices[0].value as number, sort: sorts[0].value as number });
 
   // Set Filter
   function setFilter(name: string, value: string | number): void

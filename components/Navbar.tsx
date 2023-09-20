@@ -1,6 +1,6 @@
 "use client";
-import { useState, useEffect } from "react";
 import Image from "next/image";
+import { useState, useEffect } from "react";
 import { Transition } from "@headlessui/react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCartShopping, faUser, faBars } from "@fortawesome/free-solid-svg-icons";
@@ -37,12 +37,18 @@ export default function Navbar(): JSX.Element
     setIsOpen(!isOpen);
   }
 
+  // Link
+  function link(subject: string | number): void
+  {
+    window.location.href = `/store?subject=${ subject }`;
+  }
+
   // Link Mapper
   function linkMapper(option: Radio): JSX.Element
   {
     return (
       <span className=" w-28 h-full flex justify-center items-center" key={ option.value }>
-        <a className=" font-primary scale"> { option.name } </a>
+        <button onClick={ () => link(option.value) } className=" font-primary scale"> { option.name } </button>
       </span>
     );
   }
@@ -52,7 +58,7 @@ export default function Navbar(): JSX.Element
   {
     return (
       <span className=" h-8 px-4 py-1 text-end" key={ option.value }>
-        <a className=" hover:text-sm active:text-xs font-primary transition-all duration-300"> { option.name } </a>
+        <button onClick={ () => link(option.value) } className=" hover:text-sm active:text-xs font-primary transition-all duration-300"> { option.name } </button>
       </span>
     );
   }

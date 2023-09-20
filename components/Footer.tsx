@@ -1,3 +1,4 @@
+"use client";
 import Image from "next/image";
 //
 import { subjects } from "@lib/Filters";
@@ -7,11 +8,17 @@ import logo from "@images/logo.webp";
 // Footer
 export default function Footer(): JSX.Element
 {
+  // Link
+  function link(subject: string | number): void
+  {
+    window.location.href = `/store?subject=${ subject }`;
+  }
+
   // Link Mapper
   function linkMapper(option: Radio): JSX.Element
   {
     return (
-      <a className=" my-1 text-sm text-white font-secondary scale" key={ option.value }> { option.name } </a>
+      <button onClick={ () => link(option.value) } className=" my-1 text-sm text-white font-secondary scale" key={ option.value }> { option.name } </button>
     );
   }
 
