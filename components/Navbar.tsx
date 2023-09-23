@@ -122,22 +122,22 @@ export default function Navbar(): JSX.Element
                 leaveFrom=" transform scale-100 opacity-100"
                 leaveTo=" transform scale-95 opacity-0"
               >
-                <Popover.Panel className=" w-60 md:w-80 my-3 z-10 absolute right-0 flex flex-col justify-center items-center bg-white search">
+                <Popover.Panel className=" w-60 md:w-80 my-3 z-10 flex flex-col justify-center items-center absolute right-0 bg-white search">
                   <form className=" w-full h-12 flex justify-between items-center border-b-[0.5px] border-dark-primary">
                     <input
                       name="search"
                       type="text"
                       placeholder="Enter Title, ..."
-                      className=" w-4/5 h-full px-2 text-xs md:text-sm font-primary outline-none"
+                      className=" w-4/5 h-full px-2 text-xs md:text-sm font-primary"
                     />
-                    <button className=" w-1/5 h-full flex justify-center items-center text-white outline-none bg-primary hover:bg-dark-primary transition-all">
+                    <button className=" w-1/5 h-full flex justify-center items-center text-white bg-primary hover:bg-dark-primary transition-all">
                       <FontAwesomeIcon
                         icon={ faAngleRight }
                         className=" w-5 h-5"
                       />
                     </button>
                   </form>
-                  <div className=" max-h-60 overflow-y-auto">
+                  <div className=" max-h-20 md:max-h-60 overflow-y-auto">
                     {
                       books.splice(0).map(bookMapper)
                     }
@@ -160,7 +160,7 @@ export default function Navbar(): JSX.Element
               />
             </Link>
 
-            <button onClick={ toggleOpen } className=" w-6 h-6 m-2 md:hidden outline-none scale">
+            <button onClick={ toggleOpen } className=" w-6 h-6 m-2 md:hidden scale">
               <FontAwesomeIcon
                 icon={ faBars }
                 className=" w-6 h-6"

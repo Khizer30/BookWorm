@@ -52,7 +52,7 @@ export default function Page(): JSX.Element
                   disabled
                   value={ inputs.email }
                   placeholder="Enter Your Email"
-                  className=" w-full h-8 p-1 text-sm font-medium font-secondary focus:outline-none border-b-2 border-primary focus:border-dark-primary"
+                  className=" w-full h-8 p-1 text-sm font-medium font-secondary border-b-2 border-primary focus:border-dark-primary"
                 />
               </div>
 
@@ -64,7 +64,7 @@ export default function Page(): JSX.Element
                   autoFocus
                   value={ inputs.username }
                   placeholder="Enter Your Username"
-                  className=" w-full h-8 p-1 text-sm font-medium font-secondary focus:outline-none border-b-2 border-primary focus:border-dark-primary"
+                  className=" w-full h-8 p-1 text-sm font-medium font-secondary border-b-2 border-primary focus:border-dark-primary"
                 />
               </div>
 
@@ -74,7 +74,7 @@ export default function Page(): JSX.Element
                   name="password"
                   type="password"
                   placeholder="Enter Your New Password"
-                  className=" w-full h-8 p-1 text-sm font-medium font-secondary focus:outline-none border-b-2 border-primary focus:border-dark-primary"
+                  className=" w-full h-8 p-1 text-sm font-medium font-secondary border-b-2 border-primary focus:border-dark-primary"
                 />
               </div>
 
@@ -84,12 +84,12 @@ export default function Page(): JSX.Element
                   name="repassword"
                   type="password"
                   placeholder="Re-Enter Your Password"
-                  className=" w-full h-8 p-1 text-sm font-medium font-secondary focus:outline-none border-b-2 border-primary focus:border-dark-primary"
+                  className=" w-full h-8 p-1 text-sm font-medium font-secondary border-b-2 border-primary focus:border-dark-primary"
                 />
               </div>
 
               <div className=" my-12 flex justify-center items-center">
-                <button className=" w-full h-12 rounded-3xl text-white text-sm font-secondary bg-primary hover:bg-dark-primary outline-none scale">
+                <button className=" w-full h-12 rounded-3xl text-white text-sm font-secondary bg-primary hover:bg-dark-primary scale">
                   Save
                 </button>
               </div>

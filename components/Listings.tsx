@@ -30,7 +30,7 @@ export default function Listings({ heading }: Props): JSX.Element
           { books.map(bookMapper) }
         </div>
         <div className=" w-full my-2 flex justify-center items-center">
-          <button className=" w-36 h-12 rounded-lg text-sm font-primary bg-light-grey outline-none scale">
+          <button className=" w-36 h-12 rounded-lg text-sm font-primary bg-light-grey scale">
             View Collection
           </button>
         </div>

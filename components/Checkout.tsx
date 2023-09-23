@@ -60,7 +60,7 @@ export default function Checkout(): JSX.Element
           { (items.length === 0) &&
             <div className=" w-full h-full my-2 col-span-12 flex flex-col justify-center items-center">
               <h3 className=" my-2 text-xl font-medium font-secondary"> Your Cart is Empty </h3>
-              <button className=" w-36 h-12 my-2 rounded text-sm font-primary bg-white outline-none scale">
+              <button className=" w-36 h-12 my-2 rounded text-sm font-primary bg-white scale">
                 View Collection
               </button>
             </div>
@@ -70,7 +70,7 @@ export default function Checkout(): JSX.Element
         { (items.length !== 0) &&
           <div className=" w-full flex flex-col justify-center items-end">
             <h2 className=" md:text-lg font-medium font-secondary"> { `Subtotal Rs ${ total }` } </h2>
-            <button className=" w-full md:w-36 h-12 my-2 rounded text-sm text-white font-primary bg-dark-primary outline-none scale">
+            <button className=" w-full md:w-36 h-12 my-2 rounded text-sm text-white font-primary bg-dark-primary scale">
               Checkout
             </button>
           </div>

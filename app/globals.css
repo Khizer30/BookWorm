@@ -20,6 +20,16 @@ a
   cursor: pointer;
 }
 
+button
+{
+  outline: none;
+}
+
+input
+{
+  outline: none;
+}
+
 :disabled
 {
   background-color: #F9F9F9;
