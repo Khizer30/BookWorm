@@ -1,7 +1,7 @@
 "use client";
 import Link from "next/link";
 import Image from "next/image";
-import { useState, useEffect } from "react";
+import { useState, useEffect, type FormEvent, type ChangeEvent } from "react";
 import { Popover, Transition } from "@headlessui/react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faMagnifyingGlass, faCartShopping, faUser, faAngleRight, faBars } from "@fortawesome/free-solid-svg-icons";
@@ -10,13 +10,13 @@ import { subjects } from "@lib/Filters";
 import { type Radio, type Book } from "@lib/Interface";
 import logo from "@images/logo.webp";
 import errorImg from "@images/error.webp";
-//
-import books from "@lib/Books";
 
 // Navbar
 export default function Navbar(): JSX.Element
 {
   const [isOpen, setIsOpen] = useState<boolean>(false);
+  const [query, setQuery] = useState<string>("");
+  const [books, setBooks] = useState<Book[] | null>(null);
 
   // On Mount
   useEffect(() =>
@@ -86,6 +86,32 @@ export default function Navbar(): JSX.Element
     );
   }
 
+  // Handle Submit
+  function handleSubmit(e: FormEvent<HTMLFormElement>): void
+  {
+    e.preventDefault();
+  }
+
+  // Search Book
+  async function searchBook(): Promise<void>
+  {
+    const url: string = `/api/search?query=${ query }`;
+
+    const response: Response = await fetch(url,
+      {
+        mode: "same-origin",
+        cache: "force-cache",
+        method: "GET",
+        headers:
+        {
+          "Content-Type": "application/json"
+        },
+      });
+    const result: Book[] = await response.json();
+
+    setBooks(result);
+  }
+
   return (
     <>
       <nav className=" w-full h-auto p-4">
@@ -123,14 +149,24 @@ export default function Navbar(): JSX.Element
                 leaveTo=" transform scale-95 opacity-0"
               >
                 <Popover.Panel className=" w-60 md:w-80 my-3 z-10 flex flex-col justify-center items-center absolute right-0 bg-white search">
-                  <form className=" w-full h-12 flex justify-between items-center border-b-[0.5px] border-dark-primary">
+                  <form
+                    method="get"
+                    target="_self"
+                    autoComplete="off"
+                    encType="application/x-www-form-urlencoded"
+                    onSubmit={ handleSubmit }
+                    className=" w-full h-12 flex justify-between items-center border-b-[0.5px] border-dark-primary"
+                  >
                     <input
-                      name="search"
+                      name="query"
                       type="text"
-                      placeholder="Enter Title, ..."
+                      placeholder="Enter Title, Author, ..."
+                      required
+                      value={ query }
+                      onChange={ (e: ChangeEvent<HTMLInputElement>) => setQuery(e.target.value) }
                       className=" w-4/5 h-full px-2 text-xs md:text-sm font-primary"
                     />
-                    <button className=" w-1/5 h-full flex justify-center items-center text-white bg-primary hover:bg-dark-primary transition-all">
+                    <button onClick={ searchBook } type="submit" className=" w-1/5 h-full flex justify-center items-center text-white bg-primary hover:bg-dark-primary transition-all">
                       <FontAwesomeIcon
                         icon={ faAngleRight }
                         className=" w-5 h-5"
@@ -138,8 +174,13 @@ export default function Navbar(): JSX.Element
                     </button>
                   </form>
                   <div className=" max-h-20 md:max-h-60 overflow-y-auto">
-                    {
-                      books.splice(0).map(bookMapper)
+                    { books &&
+                      books.map(bookMapper)
+                    }
+                    { books && (books.length === 0) &&
+                      <div className=" w-full h-12 flex justify-center items-center">
+                        <h3 className=" text-xs md:text-sm font-primary"> No Book Found </h3>
+                      </div>
                     }
                   </div>
                 </Popover.Panel>
