@@ -1,3 +1,4 @@
+import Link from "next/link";
 import LottiePlayer from "@components/LottiePlayer";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faRightLong } from "@fortawesome/free-solid-svg-icons";
@@ -24,13 +25,13 @@ export default function NotFound(): JSX.Element
             <h1 className=" my-2 text-7xl text-center font-semibold font-secondary"> Ooops... </h1>
             <h2 className=" my-2 text-5xl text-center font-secondary"> Page Not Found! </h2>
           </div>
-          <button className=" w-48 h-12 flex justify-center items-center rounded text-white font-secondary bg-primary hover:bg-dark-primary scale">
+          <Link href="/" className=" w-48 h-12 flex justify-center items-center rounded text-white font-secondary bg-primary hover:bg-dark-primary scale">
             Go Back
             <FontAwesomeIcon
               icon={ faRightLong }
               className=" w-4 h-4 ml-4"
             />
-          </button>
+          </Link>
         </div>
 
         <div className=" w-0 md:w-full h-0 md:h-screen col-span-1 hidden md:flex justify-center items-center">

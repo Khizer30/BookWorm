@@ -173,7 +173,7 @@ export default function Navbar(): JSX.Element
                       />
                     </button>
                   </form>
-                  <div className=" max-h-20 md:max-h-60 overflow-y-auto">
+                  <div className=" w-full max-h-20 md:max-h-60 overflow-y-auto">
                     { books &&
                       books.map(bookMapper)
                     }

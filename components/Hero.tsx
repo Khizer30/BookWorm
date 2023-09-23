@@ -1,4 +1,5 @@
 import Image from "next/image";
+import Link from "next/link";
 //
 import heroImg from "@images/hero.webp";
 
@@ -25,9 +26,9 @@ export default function Hero(): JSX.Element
             At BookWorm, we specialize in curating an extensive collection of Islamic books that cater to both curious minds and devout souls.
           </h2>
           <div className=" w-full my-2 flex justify-center items-center">
-            <button className=" w-36 h-12 rounded-lg text-sm font-primary bg-light-grey md:bg-white scale">
+            <Link href="/store" className=" w-36 h-12 rounded-lg flex justify-center items-center text-sm font-primary bg-light-grey md:bg-white scale">
               View Collection
-            </button>
+            </Link>
           </div>
         </div>
 

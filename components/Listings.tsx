@@ -1,3 +1,4 @@
+import Link from "next/link";
 //
 import Card from "@components/Card";
 import books from "@lib/Books";
@@ -30,9 +31,9 @@ export default function Listings({ heading }: Props): JSX.Element
           { books.map(bookMapper) }
         </div>
         <div className=" w-full my-2 flex justify-center items-center">
-          <button className=" w-36 h-12 rounded-lg text-sm font-primary bg-light-grey scale">
+          <Link href="/store" className=" w-36 h-12 rounded-lg flex justify-center items-center text-sm font-primary bg-light-grey scale">
             View Collection
-          </button>
+          </Link>
         </div>
       </div>
     </>
