@@ -1,5 +1,6 @@
 "use client";
 import Image from "next/image";
+import Link from "next/link";
 //
 import { subjects } from "@lib/Filters";
 import { type Radio } from "@lib/Interface";
@@ -27,14 +28,14 @@ export default function Footer(): JSX.Element
       <div className=" w-full h-72 p-6 bg-dark-primary">
         <div className=" grid grid-cols-2 justify-items-center content-center">
 
-          <div className=" w-full h-full col-span-1 flex justify-start items-center">
+          <Link href="/" title="BookWorm" className=" w-full h-full col-span-1 flex justify-start items-center">
             <Image
               src={ logo }
               alt="BookWorm"
               draggable="false"
               className=" w-36 h-36 cursor-pointer scale"
             />
-          </div>
+          </Link>
 
           <div className=" w-full h-full col-span-1 flex flex-col justify-center items-start">
             <h6 className=" my-1 text-xl text-white font-secondary"> Categories </h6>

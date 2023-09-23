@@ -148,7 +148,7 @@ export default function Navbar(): JSX.Element
                 leaveFrom=" transform scale-100 opacity-100"
                 leaveTo=" transform scale-95 opacity-0"
               >
-                <Popover.Panel className=" w-60 md:w-80 my-3 z-10 flex flex-col justify-center items-center absolute right-0 bg-white search">
+                <Popover.Panel className=" w-52 md:w-80 my-3 z-10 flex flex-col justify-center items-center absolute right-0 bg-white search">
                   <form
                     method="get"
                     target="_self"
