@@ -66,6 +66,14 @@ a
   box-shadow: 2px 2px #2A254B;
 }
 
+/* Search */
+.search
+{
+  border: 1px solid #2A254B;
+  border-radius: 0.25rem;
+  box-shadow: 1.25px 1.25px #2A254B;
+}
+
 /* Loading */
 .Corner
 {

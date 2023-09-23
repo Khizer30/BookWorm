@@ -76,7 +76,7 @@ export default function Store(storeInitialData: BooksResponse): JSX.Element
   function bookMapper(book: Book): JSX.Element
   {
     return (
-      <Card { ...book } key={ book.title } />
+      <Card { ...book } key={ book._id } />
     );
   }
 

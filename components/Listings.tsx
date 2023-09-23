@@ -16,7 +16,7 @@ export default function Listings({ heading }: Props): JSX.Element
   function bookMapper(book: Book): JSX.Element
   {
     return (
-      <Card { ...book } key={ book.title } />
+      <Card { ...book } key={ book._id } />
     );
   }
 

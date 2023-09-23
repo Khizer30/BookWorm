@@ -9,8 +9,8 @@ import Footer from "@components/Footer";
 // Metadata
 export const metadata: Metadata =
 {
-  title: "Book Worm",
-  keywords: ["Book Worm", "Homepage"]
+  title: "BookWorm",
+  keywords: ["BookWorm", "Homepage"]
 };
 
 // Page

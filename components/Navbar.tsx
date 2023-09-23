@@ -1,13 +1,17 @@
 "use client";
+import Link from "next/link";
 import Image from "next/image";
 import { useState, useEffect } from "react";
-import { Transition } from "@headlessui/react";
+import { Popover, Transition } from "@headlessui/react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faCartShopping, faUser, faBars } from "@fortawesome/free-solid-svg-icons";
+import { faMagnifyingGlass, faCartShopping, faUser, faAngleRight, faBars } from "@fortawesome/free-solid-svg-icons";
 //
 import { subjects } from "@lib/Filters";
-import { type Radio } from "@lib/Interface";
+import { type Radio, type Book } from "@lib/Interface";
 import logo from "@images/logo.webp";
+import errorImg from "@images/error.webp";
+//
+import books from "@lib/Books";
 
 // Navbar
 export default function Navbar(): JSX.Element
@@ -63,18 +67,39 @@ export default function Navbar(): JSX.Element
     );
   }
 
+  // Book Mapper
+  function bookMapper(book: Book): JSX.Element
+  {
+    return (
+      <Link href={ `/product/${ book._id }` } className=" w-full h-20 flex justify-between items-center cursor-pointer border-b-[0.5px] border-dark-primary hover:bg-light-grey transition-all" key={ book._id }>
+        <Image
+          src={ book.image || errorImg }
+          alt={ book.title }
+          width={ 250 }
+          height={ 400 }
+          draggable="false"
+          placeholder="empty"
+          className=" w-10 ml-2 md:ml-4 rounded"
+        />
+        <h3 className=" mr-2 md:mr-4 text-right text-xs md:text-sm font-primary"> { book.title } </h3>
+      </Link>
+    );
+  }
+
   return (
     <>
       <nav className=" w-full h-auto p-4">
         <div className=" grid grid-cols-12">
 
           <div className=" w-full h-full col-span-6 md:col-span-3 flex justify-start items-center">
-            <Image
-              src={ logo }
-              alt="Book Worm"
-              draggable="false"
-              className=" w-20 h-20 cursor-pointer scale"
-            />
+            <Link href="/" title="BookWorm">
+              <Image
+                src={ logo }
+                alt="BookWorm"
+                draggable="false"
+                className=" w-20 h-20 cursor-pointer scale"
+              />
+            </Link>
           </div>
 
           <div className=" w-full h-full col-span-0 md:col-span-6 hidden md:flex justify-center items-center">
@@ -82,21 +107,60 @@ export default function Navbar(): JSX.Element
           </div>
 
           <div className=" w-full h-full col-span-6 md:col-span-3 flex justify-end items-center">
-            <a className=" w-6 h-6 m-2 scale">
+            <Popover className=" relative">
+              <Popover.Button className=" w-6 h-6 m-2 flex justify-center items-center scale">
+                <FontAwesomeIcon
+                  icon={ faMagnifyingGlass }
+                  className=" w-5 h-5"
+                />
+              </Popover.Button>
+              <Transition
+                enter=" transition ease-out duration-150"
+                enterFrom=" transform scale-95 opacity-0"
+                enterTo=" transform scale-100 opacity-100"
+                leave=" transition ease-in duration-150"
+                leaveFrom=" transform scale-100 opacity-100"
+                leaveTo=" transform scale-95 opacity-0"
+              >
+                <Popover.Panel className=" w-60 md:w-80 my-3 z-10 absolute right-0 flex flex-col justify-center items-center bg-white search">
+                  <form className=" w-full h-12 flex justify-between items-center border-b-[0.5px] border-dark-primary">
+                    <input
+                      name="search"
+                      type="text"
+                      placeholder="Enter Title, ..."
+                      className=" w-4/5 h-full px-2 text-xs md:text-sm font-primary outline-none"
+                    />
+                    <button className=" w-1/5 h-full flex justify-center items-center text-white outline-none bg-primary hover:bg-dark-primary transition-all">
+                      <FontAwesomeIcon
+                        icon={ faAngleRight }
+                        className=" w-5 h-5"
+                      />
+                    </button>
+                  </form>
+                  <div className=" max-h-60 overflow-y-auto">
+                    {
+                      books.splice(0).map(bookMapper)
+                    }
+                  </div>
+                </Popover.Panel>
+              </Transition>
+            </Popover>
+
+            <Link href="/cart" className=" w-6 h-6 m-2 flex justify-center items-center scale">
               <FontAwesomeIcon
                 icon={ faCartShopping }
                 className=" w-6 h-6"
               />
-            </a>
+            </Link>
 
-            <a className=" w-6 h-6 m-2 scale">
+            <Link href="/profile" className=" w-6 h-6 m-2 flex justify-center items-center scale">
               <FontAwesomeIcon
                 icon={ faUser }
                 className=" w-6 h-6"
               />
-            </a>
+            </Link>
 
-            <button onClick={ toggleOpen } className=" w-6 h-6 m-2 md:hidden scale">
+            <button onClick={ toggleOpen } className=" w-6 h-6 m-2 md:hidden outline-none scale">
               <FontAwesomeIcon
                 icon={ faBars }
                 className=" w-6 h-6"

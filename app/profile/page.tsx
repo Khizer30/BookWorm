@@ -9,8 +9,8 @@ import animation from "@images/profile.json";
 // Metadata
 export const metadata: Metadata =
 {
-  title: "Profile | Book Worm",
-  keywords: ["Book Worm", "Profile"]
+  title: "Profile | BookWorm",
+  keywords: ["BookWorm", "Profile"]
 };
 
 // Page

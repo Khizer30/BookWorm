@@ -8,8 +8,8 @@ import animation from "@images/notfound.json";
 // Metadata
 export const metadata: Metadata =
 {
-  title: "404 | Book Worm",
-  keywords: ["Book Worm", "404"]
+  title: "404 | BookWorm",
+  keywords: ["BookWorm", "404"]
 };
 
 // 404

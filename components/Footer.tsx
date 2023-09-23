@@ -30,7 +30,7 @@ export default function Footer(): JSX.Element
           <div className=" w-full h-full col-span-1 flex justify-start items-center">
             <Image
               src={ logo }
-              alt="Book Worm"
+              alt="BookWorm"
               draggable="false"
               className=" w-36 h-36 cursor-pointer scale"
             />
@@ -44,7 +44,7 @@ export default function Footer(): JSX.Element
         </div>
         <div className=" w-full mt-8 flex flex-col justify-center items-center">
           <hr className=" w-11/12 h-1 rounded-full bg-primary" />
-          <span className=" w-11/12 my-4 text-sm text-white font-secondary"> Copyright 2022 Book Worm LTD </span>
+          <span className=" w-11/12 my-4 text-sm text-white font-secondary"> Copyright 2022 BookWorm LTD </span>
         </div>
       </div>
     </>

@@ -5,8 +5,8 @@ import Animation from "@components/Animation";
 // Metadata
 export const metadata: Metadata =
 {
-  title: "Loading | Book Worm",
-  keywords: ["Book Worm", "Loading"]
+  title: "Loading | BookWorm",
+  keywords: ["BookWorm", "Loading"]
 };
 
 // Page

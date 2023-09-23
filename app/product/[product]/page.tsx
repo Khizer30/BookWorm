@@ -12,8 +12,8 @@ import { type Book } from "@lib/Interface";
 // Metadata
 export const metadata: Metadata =
 {
-  title: "Product | Book Worm",
-  keywords: ["Book Worm", "Product"]
+  title: "Product | BookWorm",
+  keywords: ["BookWorm", "Product"]
 };
 
 // Props

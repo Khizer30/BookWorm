@@ -8,8 +8,8 @@ import animation from "@images/signup.json";
 // Metadata
 export const metadata: Metadata =
 {
-  title: "Sign Up | Book Worm",
-  keywords: ["Book Worm", "Sign Up"]
+  title: "Sign Up | BookWorm",
+  keywords: ["BookWorm", "Sign Up"]
 };
 
 // Page

@@ -11,8 +11,8 @@ import { type BooksResponse } from "@lib/Interface";
 // Metadata
 export const metadata: Metadata =
 {
-  title: "Store | Book Worm",
-  keywords: ["Book Worm", "Store"]
+  title: "Store | BookWorm",
+  keywords: ["BookWorm", "Store"]
 };
 
 // Page

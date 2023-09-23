@@ -8,9 +8,9 @@ import "./globals.css";
 // Metadata
 export const metadata: Metadata =
 {
-  title: { default: "Book Worm", template: "%s" },
+  title: { default: "BookWorm", template: "%s" },
   keywords: "%s",
-  description: "Book Worm is your premier e-commerce destination for a vast selection of books.",
+  description: "BookWorm is your premier e-commerce destination for a vast selection of books.",
   viewport:
   {
     width: "device-width",
