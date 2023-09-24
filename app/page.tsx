@@ -21,6 +21,7 @@ export default function Page(): JSX.Element
       <Navbar />
       <Hero />
       <Features />
+      { /* @ts-expect-error */ }
       <Listings heading="Popular Books" />
       <Footer />
     </>

@@ -1,7 +1,7 @@
 import Link from "next/link";
 //
 import Card from "@components/Card";
-import books from "@lib/Books";
+import { getPopularBooks } from "@lib/DB";
 import { type Book } from "@lib/Interface";
 
 // Props
@@ -11,8 +11,10 @@ interface Props
 }
 
 // Listings
-export default function Listings({ heading }: Props): JSX.Element
+export default async function Listings({ heading }: Props): Promise<JSX.Element>
 {
+  const books: Book[] = await getPopularBooks();
+
   // Book Mapper
   function bookMapper(book: Book): JSX.Element
   {

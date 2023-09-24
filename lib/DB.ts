@@ -39,4 +39,17 @@ async function getProduct(id: string): Promise<Book | null>
   return book;
 }
 
-export { startStore, getProduct };
+// Get Popular Books
+async function getPopularBooks(): Promise<Book[]>
+{
+  const client: MongoClient = await startClient();
+  const collection: Collection<Book> = client.db("bookworm").collection<Book>("popular");
+
+  const books: Book[] = await collection.find().sort({ title: -1 }).limit(4).toArray();
+
+  await client.close();
+
+  return books;
+}
+
+export { startStore, getProduct, getPopularBooks };

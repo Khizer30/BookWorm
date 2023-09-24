@@ -36,6 +36,7 @@ export default async function Page({ params }: Props): Promise<JSX.Element>
     <>
       <Navbar />
       <Product { ...book } />
+      { /* @ts-expect-error */ }
       <Listings heading="Recommended" />
       <Features />
       <Footer />
