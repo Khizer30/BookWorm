@@ -21,7 +21,7 @@ export async function GET(req: NextRequest): Promise<NextResponse<BooksResponse>
   if (page && subject && price && sort)
   {
     const x: Filter<Book> = (subject === "all") ? {} : { tags: { $in: [subject] } };
-    const y: Filter<Book> = (price === "Infinity") ? {} : { price: { $gte: +price - 500, $lt: +price } };
+    const y: Filter<Book> = (price === "Infinity") ? {} : { price: { $gte: +price - 1000, $lt: +price } };
     const z: SortDirection = (sort === "1") ? 1 : -1;
 
     books = await collection.find({ ...x, ...y }).sort({ title: z }).limit(pageSize).skip((+page - 1) * pageSize).toArray();
