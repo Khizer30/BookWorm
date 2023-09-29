@@ -1,6 +1,8 @@
 import Image from "next/image";
+import Link from "next/link";
 import { type Metadata } from "next";
 //
+import LogInForm from "@components/Forms/LogInForm";
 import LottiePlayer from "@components/LottiePlayer";
 import logo from "@images/logo.webp";
 import animation from "@images/login.json";
@@ -9,7 +11,17 @@ import animation from "@images/login.json";
 export const metadata: Metadata =
 {
   title: "Log In | BookWorm",
-  keywords: ["BookWorm", "Log In"]
+  keywords: ["BookWorm", "Log In"],
+  icons:
+  {
+    icon:
+    {
+      rel: "icon",
+      type: "image/webp",
+      sizes: "32x32",
+      url: "/images/favicon.webp"
+    }
+  }
 };
 
 // Page
@@ -21,51 +33,22 @@ export default function Page(): JSX.Element
 
         <div className=" w-full h-screen p-6 col-span-2 md:col-span-1 flex flex-col">
           <div className=" w-full h-28 flex justify-start items-center">
-            <Image
-              src={ logo }
-              alt="Logo"
-              draggable="false"
-              className=" w-20 md:w-24 h-20 md:h-24 scale"
-            />
+            <Link href="/">
+              <Image
+                src={ logo }
+                alt="Logo"
+                draggable="false"
+                className=" w-20 md:w-24 h-20 md:h-24 scale"
+              />
+            </Link>
           </div>
           <div className=" w-full h-full flex flex-col justify-center items-center">
             <h1 className=" w-9/12 my-2 text-3xl font-semibold font-secondary"> Log In </h1>
             <h2 className=" w-9/12 my-2 text-sm font-secondary">
-              If you don’t have an account
-              <br />
-              You can
-              <a className=" text-primary hover:text-dark-primary font-semibold transition-all"> Register Here! </a>
+              To Go Back,
+              <Link href="/" className=" text-primary hover:text-dark-primary font-semibold transition-all"> Click Here! </Link>
             </h2>
-            <form action="" method="post" target="_self" className=" w-9/12 my-2">
-
-              <div className=" my-8">
-                <h3 className=" text-xs font-secondary"> Email </h3>
-                <input
-                  name="email"
-                  type="email"
-                  autoFocus
-                  placeholder="Enter Your Email"
-                  className=" w-full h-8 p-1 text-sm font-medium font-secondary border-b-2 border-primary focus:border-dark-primary"
-                />
-              </div>
-
-              <div className=" my-8">
-                <h3 className=" text-xs font-secondary"> Password </h3>
-                <input
-                  name="password"
-                  type="password"
-                  placeholder="Enter Your Password"
-                  className=" w-full h-8 p-1 text-sm font-medium font-secondary border-b-2 border-primary focus:border-dark-primary"
-                />
-              </div>
-
-              <div className=" my-12 flex justify-center items-center">
-                <button className=" w-full h-12 rounded-3xl text-white text-sm font-secondary bg-primary hover:bg-dark-primary scale">
-                  Log In
-                </button>
-              </div>
-
-            </form>
+            <LogInForm />
           </div>
         </div>
 

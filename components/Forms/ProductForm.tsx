@@ -25,6 +25,7 @@ export default function ProductForm(): JSX.Element
         target="_self"
         autoComplete="off"
         encType="application/x-www-form-urlencoded"
+        noValidate
         onSubmit={ handleSubmit }
         className=" w-full"
       >

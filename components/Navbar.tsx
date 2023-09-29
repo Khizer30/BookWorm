@@ -4,9 +4,12 @@ import Image from "next/image";
 import { useState, useEffect, type FormEvent, type ChangeEvent } from "react";
 import { Popover, Transition } from "@headlessui/react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faMagnifyingGlass, faCartShopping, faUser, faAngleRight, faBars } from "@fortawesome/free-solid-svg-icons";
+import { faMagnifyingGlass, faAngleRight, faCartShopping, faUser, faRightToBracket, faUserPen, faPowerOff, faBars } from "@fortawesome/free-solid-svg-icons";
+import { type User } from "firebase/auth";
 //
+import { useAuthContext } from "@lib/AuthContext";
 import { subjects } from "@lib/Filters";
+import { logout } from "@lib/Auth";
 import { type Radio, type Book } from "@lib/Interface";
 import logo from "@images/logo.webp";
 import errorImg from "@images/error.webp";
@@ -17,6 +20,7 @@ export default function Navbar(): JSX.Element
   const [isOpen, setIsOpen] = useState<boolean>(false);
   const [query, setQuery] = useState<string>("");
   const [books, setBooks] = useState<Book[] | null>(null);
+  const user: User | null | undefined = useAuthContext();
 
   // On Mount
   useEffect(() =>
@@ -71,7 +75,7 @@ export default function Navbar(): JSX.Element
   function bookMapper(book: Book): JSX.Element
   {
     return (
-      <Link href={ `/product/${ book._id }` } className=" w-full h-20 flex justify-between items-center cursor-pointer border-b-[0.5px] border-dark-primary hover:bg-light-grey transition-all" key={ book._id }>
+      <Link href={ `/product/${ book._id }` } className=" w-full h-20 flex justify-between items-center border-b-[0.5px] border-dark-primary hover:bg-light-grey transition-all" key={ book._id }>
         <Image
           src={ book.image || errorImg }
           alt={ book.title }
@@ -149,11 +153,13 @@ export default function Navbar(): JSX.Element
                 leaveTo=" transform scale-95 opacity-0"
               >
                 <Popover.Panel className=" w-52 md:w-80 my-3 z-10 flex flex-col justify-center items-center absolute right-0 bg-white search">
+
                   <form
                     method="get"
                     target="_self"
                     autoComplete="off"
                     encType="application/x-www-form-urlencoded"
+                    noValidate
                     onSubmit={ handleSubmit }
                     className=" w-full h-12 flex justify-between items-center border-b-[0.5px] border-dark-primary"
                   >
@@ -173,6 +179,7 @@ export default function Navbar(): JSX.Element
                       />
                     </button>
                   </form>
+
                   <div className=" w-full max-h-20 md:max-h-60 overflow-y-auto">
                     { books &&
                       books.map(bookMapper)
@@ -183,6 +190,7 @@ export default function Navbar(): JSX.Element
                       </div>
                     }
                   </div>
+
                 </Popover.Panel>
               </Transition>
             </Popover>
@@ -194,12 +202,53 @@ export default function Navbar(): JSX.Element
               />
             </Link>
 
-            <Link href="/profile" className=" w-6 h-6 m-2 flex justify-center items-center scale">
-              <FontAwesomeIcon
-                icon={ faUser }
-                className=" w-6 h-6"
-              />
-            </Link>
+            <Popover className=" relative">
+              <Popover.Button className=" w-6 h-6 m-2 flex justify-center items-center scale">
+                <FontAwesomeIcon
+                  icon={ faUser }
+                  className=" w-6 h-6"
+                />
+              </Popover.Button>
+              <Transition
+                enter=" transition ease-out duration-150"
+                enterFrom=" transform scale-95 opacity-0"
+                enterTo=" transform scale-100 opacity-100"
+                leave=" transition ease-in duration-150"
+                leaveFrom=" transform scale-100 opacity-100"
+                leaveTo=" transform scale-95 opacity-0"
+              >
+                <Popover.Panel className=" w-32 my-3 z-10 flex flex-col justify-center items-center absolute right-0 bg-white search">
+                  { user ?
+                    (
+                      <>
+                        <Link href="/profile" className=" w-full h-12 px-4 flex justify-between items-center border-b-[0.5px] border-dark-primary hover:bg-light-grey transition-all">
+                          <FontAwesomeIcon
+                            icon={ faUserPen }
+                          />
+                          <h3 className=" text-xs md:text-sm font-primary"> Profile </h3>
+                        </Link>
+
+                        <button onClick={ logout } type="button" className=" w-full h-12 px-4 flex justify-between items-center border-b-[0.5px] border-dark-primary hover:bg-light-grey transition-all">
+                          <FontAwesomeIcon
+                            icon={ faPowerOff }
+                          />
+                          <h3 className=" text-xs md:text-sm font-primary"> Log Out </h3>
+                        </button>
+                      </>
+                    ) : (
+                      <>
+                        <Link href="/auth/login" className=" w-full h-12 px-4 flex justify-between items-center border-b-[0.5px] border-dark-primary hover:bg-light-grey transition-all">
+                          <FontAwesomeIcon
+                            icon={ faRightToBracket }
+                          />
+                          <h3 className=" text-xs md:text-sm font-primary"> Log In </h3>
+                        </Link>
+                      </>
+                    )
+                  }
+                </Popover.Panel>
+              </Transition>
+            </Popover>
 
             <button onClick={ toggleOpen } className=" w-6 h-6 m-2 md:hidden scale">
               <FontAwesomeIcon

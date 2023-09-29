@@ -9,7 +9,7 @@ export default function Card({ _id, title, price, image }: Book): JSX.Element
 {
   return (
     <>
-      <Link href={ `/product/${ _id }` } className=" w-40 md:w-52 h-80 md:h-[24rem] p-4 flex flex-col justify-between items-center rounded-md hover:bg-light-grey cursor-pointer active:scale-95 transition-all duration-250">
+      <Link href={ `/product/${ _id }` } className=" w-40 md:w-52 h-80 md:h-[24rem] p-4 flex flex-col justify-between items-center rounded-md hover:bg-light-grey active:scale-95 transition-all duration-250">
         <Image
           src={ image || errorImg }
           alt={ title }

@@ -64,4 +64,11 @@ interface StoreMenu
   sort: number;
 }
 
-export type { Children, Radio, HeadlessUI, Book, CartItem, UserType, BooksResponse, StoreMenu };
+// Firebase Error
+interface FirebaseError
+{
+  code: number;
+  message: string;
+}
+
+export type { Children, Radio, HeadlessUI, Book, CartItem, UserType, BooksResponse, StoreMenu, FirebaseError };
