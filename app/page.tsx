@@ -10,7 +10,17 @@ import Footer from "@components/Footer";
 export const metadata: Metadata =
 {
   title: "BookWorm",
-  keywords: ["BookWorm", "Homepage"]
+  keywords: ["BookWorm", "Homepage"],
+  icons:
+  {
+    icon:
+    {
+      rel: "icon",
+      type: "image/webp",
+      sizes: "32x32",
+      url: "/images/favicon.webp"
+    }
+  }
 };
 
 // Page

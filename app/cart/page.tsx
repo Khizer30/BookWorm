@@ -8,7 +8,17 @@ import Footer from "@components/Footer";
 export const metadata: Metadata =
 {
   title: "Shopping Cart | BookWorm",
-  keywords: ["BookWorm", "Shopping Cart"]
+  keywords: ["BookWorm", "Shopping Cart"],
+  icons:
+  {
+    icon:
+    {
+      rel: "icon",
+      type: "image/webp",
+      sizes: "32x32",
+      url: "/images/favicon.webp"
+    }
+  }
 };
 
 // Page

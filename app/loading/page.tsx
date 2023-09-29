@@ -6,7 +6,17 @@ import Animation from "@components/Animation";
 export const metadata: Metadata =
 {
   title: "Loading | BookWorm",
-  keywords: ["BookWorm", "Loading"]
+  keywords: ["BookWorm", "Loading"],
+  icons:
+  {
+    icon:
+    {
+      rel: "icon",
+      type: "image/webp",
+      sizes: "32x32",
+      url: "/images/favicon.webp"
+    }
+  }
 };
 
 // Page

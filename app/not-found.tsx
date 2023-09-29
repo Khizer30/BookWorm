@@ -10,7 +10,17 @@ import animation from "@images/notfound.json";
 export const metadata: Metadata =
 {
   title: "404 | BookWorm",
-  keywords: ["BookWorm", "404"]
+  keywords: ["BookWorm", "404"],
+  icons:
+  {
+    icon:
+    {
+      rel: "icon",
+      type: "image/webp",
+      sizes: "32x32",
+      url: "/images/favicon.webp"
+    }
+  }
 };
 
 // 404

@@ -12,7 +12,17 @@ import { type BooksResponse } from "@lib/Interface";
 export const metadata: Metadata =
 {
   title: "Store | BookWorm",
-  keywords: ["BookWorm", "Store"]
+  keywords: ["BookWorm", "Store"],
+  icons:
+  {
+    icon:
+    {
+      rel: "icon",
+      type: "image/webp",
+      sizes: "32x32",
+      url: "/images/favicon.webp"
+    }
+  }
 };
 
 // Page

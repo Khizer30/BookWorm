@@ -10,7 +10,17 @@ import animation from "@images/profile.json";
 export const metadata: Metadata =
 {
   title: "Profile | BookWorm",
-  keywords: ["BookWorm", "Profile"]
+  keywords: ["BookWorm", "Profile"],
+  icons:
+  {
+    icon:
+    {
+      rel: "icon",
+      type: "image/webp",
+      sizes: "32x32",
+      url: "/images/favicon.webp"
+    }
+  }
 };
 
 // Page

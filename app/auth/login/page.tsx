@@ -33,7 +33,7 @@ export default function Page(): JSX.Element
 
         <div className=" w-full h-screen p-6 col-span-2 md:col-span-1 flex flex-col">
           <div className=" w-full h-28 flex justify-start items-center">
-            <Link href="/">
+            <Link href="/" title="BookWorm">
               <Image
                 src={ logo }
                 alt="Logo"
