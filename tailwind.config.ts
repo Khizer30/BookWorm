@@ -14,6 +14,7 @@ const config: Config =
       "white": "#FFFFFF",
       "light-grey": "#F9F9F9",
       "red": "#AB1D30",
+      "green": "#23752B",
       "primary": "#4E4D93",
       "dark-primary": "#2A254B",
       "black": "#000000"

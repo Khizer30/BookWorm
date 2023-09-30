@@ -27,11 +27,11 @@ export default function LogInForm(): JSX.Element
     const data: TheUser =
     {
       _id: x.uid,
-      email: x.email,
-      displayName: x.displayName,
-      phoneNumber: x.phoneNumber,
-      address: null,
-      city: null,
+      email: x.email || "",
+      displayName: x.displayName || "",
+      phoneNumber: x.phoneNumber || "",
+      address: "",
+      city: "",
       cart: []
     };
 

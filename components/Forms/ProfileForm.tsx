@@ -2,7 +2,7 @@
 import { useState, type FormEvent, type ChangeEvent } from "react";
 //
 import regex from "@lib/Regex";
-import { type TheUser } from "@lib/Interface";
+import { type TheUser, type FirebaseError } from "@lib/Interface";
 
 // Props
 interface Props
@@ -27,6 +27,33 @@ export default function ProfileForm({ user }: Props): JSX.Element
   function handleChange(e: ChangeEvent<HTMLInputElement>): void
   {
     setInputs((values: TheUser) => ({ ...values, [e.target.name]: e.target.value }));
+  }
+
+  // Set User
+  async function setUser(): Promise<void>
+  {
+    const response: Response = await fetch("/api/user",
+      {
+        mode: "same-origin",
+        method: "POST",
+        headers:
+        {
+          "Content-Type": "application/json"
+        },
+        body: JSON.stringify(inputs)
+      });
+    const result: FirebaseError = await response.json();
+
+    if (result.code === 100)
+    {
+      setColor(false);
+      setError(result.message);
+    }
+    else
+    {
+      setColor(true);
+      setError(result.message);
+    }
   }
 
   // Check Input
@@ -69,7 +96,7 @@ export default function ProfileForm({ user }: Props): JSX.Element
       && checkInput("Address", inputs.address?.trim(), 300, regex.address)
       && checkInput("City", inputs.city?.trim(), 100, regex.city))
     {
-      console.log(inputs);
+      await setUser();
     }
   }
 
@@ -86,7 +113,7 @@ export default function ProfileForm({ user }: Props): JSX.Element
       >
 
         <h6
-          className={ ` w-full ${ error ? "" : "invisible" } text-center text-sm ${ color ? "text-red" : "" } font-secondary` }
+          className={ ` w-full ${ error ? "" : "invisible" } text-center text-sm ${ color ? "text-red" : "text-green" } font-medium font-secondary` }
         >
           { error || <br /> }
         </h6>
@@ -112,7 +139,6 @@ export default function ProfileForm({ user }: Props): JSX.Element
             type="text"
             placeholder="i.e. Muhammad Khizer"
             required
-            autoFocus
             maxLength={ 100 }
             value={ inputs.displayName || "" }
             onChange={ handleChange }
