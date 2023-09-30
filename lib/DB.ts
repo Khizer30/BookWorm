@@ -1,7 +1,7 @@
 import { type MongoClient, type Collection } from "mongodb";
 //
 import startClient from "@lib/MongoDB";
-import { type Book, type BooksResponse } from "@lib/Interface";
+import { type Book, type BooksResponse, type TheUser } from "@lib/Interface";
 
 // Start Store
 async function startStore(): Promise<BooksResponse>
@@ -52,4 +52,17 @@ async function getPopularBooks(): Promise<Book[]>
   return books;
 }
 
-export { startStore, getProduct, getPopularBooks };
+// Get User
+async function getUser(id: string): Promise<TheUser | null>
+{
+  const client: MongoClient = await startClient();
+  const collection: Collection<TheUser> = client.db("bookworm").collection<TheUser>("users");
+
+  const user: TheUser | null = await collection.findOne({ _id: id });
+
+  await client.close();
+
+  return user;
+}
+
+export { startStore, getProduct, getPopularBooks, getUser };

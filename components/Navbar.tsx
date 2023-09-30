@@ -221,7 +221,7 @@ export default function Navbar(): JSX.Element
                   { user ?
                     (
                       <>
-                        <Link href="/profile" className=" w-full h-12 px-4 flex justify-between items-center border-b-[0.5px] border-dark-primary hover:bg-light-grey transition-all">
+                        <Link href={ `/profile/${ user.uid }` } className=" w-full h-12 px-4 flex justify-between items-center border-b-[0.5px] border-dark-primary hover:bg-light-grey transition-all">
                           <FontAwesomeIcon
                             icon={ faUserPen }
                           />

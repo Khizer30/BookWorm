@@ -41,14 +41,6 @@ interface CartItem
   quantity: number;
 }
 
-// UserType
-interface UserType
-{
-  email: string;
-  username: string;
-  password: string;
-}
-
 // Books Response
 interface BooksResponse
 {
@@ -72,6 +64,7 @@ interface TheUser
   displayName: string | null;
   phoneNumber: string | null;
   address: string | null;
+  city: string | null;
   cart: UserCart[];
 }
 
@@ -89,4 +82,4 @@ interface FirebaseError
   message: string;
 }
 
-export type { Children, Radio, HeadlessUI, Book, CartItem, UserType, BooksResponse, StoreMenu, TheUser, UserCart, FirebaseError };
+export type { Children, Radio, HeadlessUI, Book, CartItem, BooksResponse, StoreMenu, TheUser, UserCart, FirebaseError };

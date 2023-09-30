@@ -31,6 +31,7 @@ export default function LogInForm(): JSX.Element
       displayName: x.displayName,
       phoneNumber: x.phoneNumber,
       address: null,
+      city: null,
       cart: []
     };
 
