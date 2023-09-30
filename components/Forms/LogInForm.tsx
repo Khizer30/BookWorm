@@ -4,6 +4,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faGoogle } from "@fortawesome/free-brands-svg-icons";
 //
 import auth from "@lib/Firebase";
+import { type TheUser } from "@lib/Interface";
 
 // Log In Form
 export default function LogInForm(): JSX.Element
@@ -14,11 +15,34 @@ export default function LogInForm(): JSX.Element
   async function login(): Promise<void>
   {
     signInWithPopup(auth, provider)
-      .then((x: UserCredential) =>
+      .then(async (x: UserCredential) =>
       {
-        const user: User = x.user;
+        await updateDB(x.user);
+      });
+  }
 
-        // Update Database
+  // Update Database
+  async function updateDB(x: User): Promise<void>
+  {
+    const data: TheUser =
+    {
+      _id: x.uid,
+      email: x.email,
+      displayName: x.displayName,
+      phoneNumber: x.phoneNumber,
+      address: null,
+      cart: []
+    };
+
+    await fetch("/api/login",
+      {
+        mode: "same-origin",
+        method: "POST",
+        headers:
+        {
+          "Content-Type": "application/json"
+        },
+        body: JSON.stringify(data)
       });
   }
 

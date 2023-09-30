@@ -64,6 +64,24 @@ interface StoreMenu
   sort: number;
 }
 
+// The User
+interface TheUser
+{
+  _id: string;
+  email: string | null;
+  displayName: string | null;
+  phoneNumber: string | null;
+  address: string | null;
+  cart: UserCart[];
+}
+
+// User Cart
+interface UserCart
+{
+  bid: string;
+  quantity: number;
+}
+
 // Firebase Error
 interface FirebaseError
 {
@@ -71,4 +89,4 @@ interface FirebaseError
   message: string;
 }
 
-export type { Children, Radio, HeadlessUI, Book, CartItem, UserType, BooksResponse, StoreMenu, FirebaseError };
+export type { Children, Radio, HeadlessUI, Book, CartItem, UserType, BooksResponse, StoreMenu, TheUser, UserCart, FirebaseError };
