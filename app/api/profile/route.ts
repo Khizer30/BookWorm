@@ -4,7 +4,7 @@ import { type MongoClient, type Collection, type Filter, type UpdateFilter, type
 import startClient from "@lib/MongoDB";
 import { type TheUser } from "@lib/Interface";
 
-// Login
+// Profile
 export async function POST(req: NextRequest)
 {
   const client: MongoClient = await startClient();
@@ -27,16 +27,9 @@ export async function POST(req: NextRequest)
 
   await client.close();
 
-  if (result.matchedCount)
+  if (result.modifiedCount)
   {
-    if (result.modifiedCount)
-    {
-      return NextResponse.json({ code: 100, message: "User Updated" });
-    }
-    else
-    {
-      return NextResponse.json({ code: 400, message: "" });
-    }
+    return NextResponse.json({ code: 100, message: "User Updated" });
   }
   else
   {

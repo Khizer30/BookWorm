@@ -69,7 +69,7 @@ export default function Product({ _id, title, price, description, image, authors
             </div>
           </div>
 
-          <ProductForm />
+          <ProductForm bid={ _id } title={ title } />
 
         </div>
 

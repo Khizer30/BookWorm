@@ -2,7 +2,7 @@
 import { useState, type FormEvent, type ChangeEvent } from "react";
 //
 import regex from "@lib/Regex";
-import { type TheUser, type FirebaseError } from "@lib/Interface";
+import { type TheUser, type Res } from "@lib/Interface";
 
 // Props
 interface Props
@@ -14,7 +14,7 @@ interface Props
 export default function ProfileForm({ user }: Props): JSX.Element
 {
   const [inputs, setInputs] = useState<TheUser>(user);
-  const [error, setError] = useState<string>("");
+  const [message, setMessage] = useState<string>("");
   const [color, setColor] = useState<boolean>(true);
 
   // Handle Submit
@@ -32,7 +32,7 @@ export default function ProfileForm({ user }: Props): JSX.Element
   // Set User
   async function setUser(): Promise<void>
   {
-    const response: Response = await fetch("/api/user",
+    const response: Response = await fetch("/api/profile",
       {
         mode: "same-origin",
         method: "POST",
@@ -42,24 +42,24 @@ export default function ProfileForm({ user }: Props): JSX.Element
         },
         body: JSON.stringify(inputs)
       });
-    const result: FirebaseError = await response.json();
+    const result: Res = await response.json();
 
     if (result.code === 100)
     {
       setColor(false);
-      setError(result.message);
+      setMessage(result.message);
     }
     else
     {
       setColor(true);
-      setError(result.message);
+      setMessage(result.message);
     }
   }
 
   // Check Input
   function checkInput(name: string, value: string | null | undefined, len: number, reg: RegExp): boolean
   {
-    setError("");
+    setMessage("");
 
     if (value)
     {
@@ -71,19 +71,19 @@ export default function ProfileForm({ user }: Props): JSX.Element
         }
         else
         {
-          setError(`*Kindly, Enter Valid ${ name }`);
+          setMessage(`*Kindly, Enter Valid ${ name }`);
           return false;
         }
       }
       else
       {
-        setError(`*Kindly, Shorten The ${ name }`);
+        setMessage(`*Kindly, Shorten The ${ name }`);
         return false;
       }
     }
     else
     {
-      setError(`*Kindly, Enter The ${ name }`);
+      setMessage(`*Kindly, Enter The ${ name }`);
       return false;
     }
   }
@@ -113,9 +113,9 @@ export default function ProfileForm({ user }: Props): JSX.Element
       >
 
         <h6
-          className={ ` w-full ${ error ? "" : "invisible" } text-center text-sm ${ color ? "text-red" : "text-green" } font-medium font-secondary` }
+          className={ ` w-full ${ message ? "" : "invisible" } text-center text-sm ${ color ? "text-red" : "text-green" } font-medium font-secondary` }
         >
-          { error || <br /> }
+          { message || <br /> }
         </h6>
 
         <div className=" my-8">

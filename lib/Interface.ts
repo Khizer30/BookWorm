@@ -32,15 +32,6 @@ interface Book
   tags: string[];
 }
 
-// Cart Item
-interface CartItem
-{
-  title: string;
-  price: number;
-  image: StaticImageData | string;
-  quantity: number;
-}
-
 // Books Response
 interface BooksResponse
 {
@@ -65,21 +56,32 @@ interface TheUser
   phoneNumber: string | null;
   address: string | null;
   city: string | null;
-  cart: UserCart[];
+  cart: { bid: string, quantity: number; }[];
 }
 
-// User Cart
-interface UserCart
+// Product
+interface Product
 {
+  uid: string;
   bid: string;
+  title: string;
   quantity: number;
 }
 
-// Firebase Error
-interface FirebaseError
+// Res
+interface Res
 {
   code: number;
   message: string;
 }
 
-export type { Children, Radio, HeadlessUI, Book, CartItem, BooksResponse, StoreMenu, TheUser, UserCart, FirebaseError };
+// Cart Item
+interface CartItem
+{
+  title: string;
+  price: number;
+  image: StaticImageData | string;
+  quantity: number;
+}
+
+export type { Children, Radio, HeadlessUI, Book, BooksResponse, StoreMenu, TheUser, Product, Res, CartItem };
