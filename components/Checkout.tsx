@@ -1,13 +1,19 @@
 "use client";
 import { useState, useEffect } from "react";
 //
-import Item from "@components/Item";
+import CartItem from "@components/CartItem";
 import { type Item } from "@lib/Interface";
 
-// Checkout
-export default function Checkout(): JSX.Element
+// Props
+interface Props
 {
-  const items: Item[] = [];
+  data: Item[];
+}
+
+// Checkout
+export default function Checkout({ data }: Props): JSX.Element
+{
+  const [items, setItems] = useState<Item[]>(data);
   const [total, setTotal] = useState<number>(0);
 
   // On Mount
@@ -23,11 +29,11 @@ export default function Checkout(): JSX.Element
     setTotal(temp);
   }, []);
 
-  // Item Mapper
+  // Cart Item Mapper
   function itemMapper(item: Item): JSX.Element
   {
     return (
-      <Item { ...item } key={ item.title } />
+      <CartItem { ...item } key={ item.id } />
     );
   }
 

@@ -37,7 +37,7 @@ export default async function Page({ params }: Props): Promise<JSX.Element>
   return (
     <>
       <Navbar />
-      <Checkout />
+      <Checkout data={ items } />
       <Footer />
     </>
   );

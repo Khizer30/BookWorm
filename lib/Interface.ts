@@ -76,6 +76,7 @@ interface Cart
 // Item
 interface Item
 {
+  id: string;
   title: string;
   price: number;
   image: StaticImageData | string;

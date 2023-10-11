@@ -1,19 +1,24 @@
+"use client";
 import Image from "next/image";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faTrashCan } from "@fortawesome/free-solid-svg-icons";
 //
 import { type Item } from "@lib/Interface";
+import errorImg from "@images/error.webp";
 
-// Item
-export default function Item({ title, price, image, quantity }: Item): JSX.Element
+// CartItem
+export default function CartItem({ id, title, price, image, quantity }: Item): JSX.Element
 {
   return (
     <>
       <div className=" w-full my-4 col-span-6 md:col-span-8 flex justify-center items-center">
         <Image
-          src={ image }
+          src={ image || errorImg }
           alt={ title }
+          width={ 250 }
+          height={ 400 }
           draggable="false"
+          placeholder="empty"
           className=" w-12 md:w-20 mr-1 rounded"
         />
         <div className=" w-full ml-1">

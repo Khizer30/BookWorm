@@ -113,6 +113,7 @@ async function getCart(id: string): Promise<Item[]>
 
     items = books.map((obj: Book, index: number) =>
     ({
+      id: cart[index].bid,
       ...obj,
       quantity: cart[index].quantity
     }));
