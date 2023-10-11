@@ -1,7 +1,7 @@
-import { type MongoClient, type Collection } from "mongodb";
+import { type MongoClient, type Collection, type Filter, type FindOptions } from "mongodb";
 //
 import startClient from "@lib/MongoDB";
-import { type Book, type BooksResponse, type TheUser } from "@lib/Interface";
+import { type BooksResponse, type Book, type TheUser, type Cart, type Item } from "@lib/Interface";
 
 // Start Store
 async function startStore(): Promise<BooksResponse>
@@ -65,4 +65,60 @@ async function getUser(id: string): Promise<TheUser | null>
   return user;
 }
 
-export { startStore, getProduct, getPopularBooks, getUser };
+// Get Cart
+async function getCart(id: string): Promise<Item[]>
+{
+  const client: MongoClient = await startClient();
+  const usersCollection: Collection<TheUser> = client.db("bookworm").collection<TheUser>("users");
+  const booksCollection: Collection<Book> = client.db("bookworm").collection<Book>("books");
+  let items: Item[] = [];
+
+  let x: Filter<TheUser | Book> =
+  {
+    _id: id
+  };
+  let y: FindOptions<TheUser> =
+  {
+    projection:
+    {
+      _id: 0,
+      cart: 1
+    }
+  };
+
+  const user: TheUser | null = await usersCollection.findOne(x, y);
+
+  if (user)
+  {
+    const cart: Cart[] = user.cart;
+    const bids: string[] = [];
+    cart.forEach((value: Cart) => bids.push(value.bid));
+
+    x =
+    {
+      _id: { $in: bids }
+    };
+    y =
+    {
+      projection:
+      {
+        _id: 0,
+        title: 1,
+        price: 1,
+        image: 1
+      }
+    };
+
+    const books: Book[] = await booksCollection.find(x, y).toArray();
+
+    items = books.map((obj: Book, index: number) =>
+    ({
+      ...obj,
+      quantity: cart[index].quantity
+    }));
+  }
+
+  return items;
+}
+
+export { startStore, getProduct, getPopularBooks, getUser, getCart };

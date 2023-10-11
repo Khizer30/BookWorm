@@ -20,6 +20,20 @@ interface HeadlessUI
   checked: boolean;
 }
 
+// Res
+interface Res
+{
+  code: number;
+  message: string;
+}
+
+// Books Response
+interface BooksResponse
+{
+  books: Book[];
+  pages: number[];
+}
+
 // Book
 interface Book
 {
@@ -30,13 +44,6 @@ interface Book
   authors: string[];
   image: StaticImageData | string;
   tags: string[];
-}
-
-// Books Response
-interface BooksResponse
-{
-  books: Book[];
-  pages: number[];
 }
 
 // Store Menu
@@ -56,7 +63,23 @@ interface TheUser
   phoneNumber: string | null;
   address: string | null;
   city: string | null;
-  cart: { bid: string, quantity: number; }[];
+  cart: Cart[];
+}
+
+// Cart
+interface Cart
+{
+  bid: string;
+  quantity: number;
+}
+
+// Item
+interface Item
+{
+  title: string;
+  price: number;
+  image: StaticImageData | string;
+  quantity: number;
 }
 
 // Product
@@ -68,20 +91,4 @@ interface Product
   quantity: number;
 }
 
-// Res
-interface Res
-{
-  code: number;
-  message: string;
-}
-
-// Cart Item
-interface CartItem
-{
-  title: string;
-  price: number;
-  image: StaticImageData | string;
-  quantity: number;
-}
-
-export type { Children, Radio, HeadlessUI, Book, BooksResponse, StoreMenu, TheUser, Product, Res, CartItem };
+export type { Children, Radio, HeadlessUI, Res, BooksResponse, Book, StoreMenu, TheUser, Cart, Item, Product };

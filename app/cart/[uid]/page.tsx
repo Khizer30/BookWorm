@@ -3,6 +3,8 @@ import { type Metadata } from "next";
 import Navbar from "@components/Navbar";
 import Checkout from "@components/Checkout";
 import Footer from "@components/Footer";
+import { getCart } from "@lib/DB";
+import { type Item } from "@lib/Interface";
 
 // Metadata
 export const metadata: Metadata =
@@ -21,9 +23,17 @@ export const metadata: Metadata =
   }
 };
 
-// Page
-export default function Page(): JSX.Element
+// Props
+interface Props
 {
+  params: { uid: string; };
+}
+
+// Page
+export default async function Page({ params }: Props): Promise<JSX.Element>
+{
+  const items: Item[] = await getCart(params.uid);
+
   return (
     <>
       <Navbar />

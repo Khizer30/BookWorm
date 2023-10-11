@@ -195,12 +195,14 @@ export default function Navbar(): JSX.Element
               </Transition>
             </Popover>
 
-            <Link href="/cart" className=" w-6 h-6 m-2 flex justify-center items-center scale">
-              <FontAwesomeIcon
-                icon={ faCartShopping }
-                className=" w-6 h-6"
-              />
-            </Link>
+            { user &&
+              <Link href={ `/cart/${ user.uid }` } className=" w-6 h-6 m-2 flex justify-center items-center scale">
+                <FontAwesomeIcon
+                  icon={ faCartShopping }
+                  className=" w-6 h-6"
+                />
+              </Link>
+            }
 
             <Popover className=" relative">
               <Popover.Button className=" w-6 h-6 m-2 flex justify-center items-center scale">
