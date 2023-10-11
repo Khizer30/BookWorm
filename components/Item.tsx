@@ -2,10 +2,10 @@ import Image from "next/image";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faTrashCan } from "@fortawesome/free-solid-svg-icons";
 //
-import { type CartItem } from "@lib/Interface";
+import { type Item } from "@lib/Interface";
 
 // Item
-export default function Item({ title, price, image, quantity }: CartItem): JSX.Element
+export default function Item({ title, price, image, quantity }: Item): JSX.Element
 {
   return (
     <>

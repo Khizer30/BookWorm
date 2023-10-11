@@ -2,7 +2,7 @@
 import { useState, type FormEvent, type ChangeEvent } from "react";
 //
 import regex from "@lib/Regex";
-import { type TheUser, type Res } from "@lib/Interface";
+import { type Res, type TheUser } from "@lib/Interface";
 
 // Props
 interface Props

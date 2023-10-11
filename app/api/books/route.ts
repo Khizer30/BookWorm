@@ -2,7 +2,7 @@ import { NextResponse, type NextRequest } from "next/server";
 import { type MongoClient, type Collection, type Filter, type SortDirection } from "mongodb";
 //
 import startClient from "@lib/MongoDB";
-import { type Book, type BooksResponse } from "@lib/Interface";
+import { type BooksResponse, type Book } from "@lib/Interface";
 
 // Books
 export async function GET(req: NextRequest): Promise<NextResponse<BooksResponse>>

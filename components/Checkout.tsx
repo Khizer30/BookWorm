@@ -2,12 +2,12 @@
 import { useState, useEffect } from "react";
 //
 import Item from "@components/Item";
-import { type CartItem } from "@lib/Interface";
+import { type Item } from "@lib/Interface";
 
 // Checkout
 export default function Checkout(): JSX.Element
 {
-  const items: CartItem[] = [];
+  const items: Item[] = [];
   const [total, setTotal] = useState<number>(0);
 
   // On Mount
@@ -24,7 +24,7 @@ export default function Checkout(): JSX.Element
   }, []);
 
   // Item Mapper
-  function itemMapper(item: CartItem): JSX.Element
+  function itemMapper(item: Item): JSX.Element
   {
     return (
       <Item { ...item } key={ item.title } />

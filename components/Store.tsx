@@ -6,7 +6,7 @@ import { RadioGroup } from "@headlessui/react";
 import Card from "@components/Card";
 import Animation from "@components/Animation";
 import { useStoreContext } from "@lib/StoreContext";
-import { type HeadlessUI, type Book, type BooksResponse } from "@lib/Interface";
+import { type HeadlessUI, type BooksResponse, type Book } from "@lib/Interface";
 
 // Store
 export default function Store(storeInitialData: BooksResponse): JSX.Element
