@@ -92,7 +92,11 @@ async function getCart(id: string): Promise<Item[]>
   {
     const cart: Cart[] = user.cart;
     const bids: string[] = [];
-    cart.forEach((value: Cart) => bids.push(value.bid));
+
+    for (let i: number = 0; i < cart.length; i++)
+    {
+      bids.push(cart[i].bid);
+    }
 
     x =
     {
@@ -118,6 +122,8 @@ async function getCart(id: string): Promise<Item[]>
       quantity: cart[index].quantity
     }));
   }
+
+  await client.close();
 
   return items;
 }

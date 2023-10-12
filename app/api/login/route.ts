@@ -5,7 +5,7 @@ import startClient from "@lib/MongoDB";
 import { type TheUser } from "@lib/Interface";
 
 // Login
-export async function POST(req: NextRequest)
+export async function POST(req: NextRequest): Promise<NextResponse<string>>
 {
   const client: MongoClient = await startClient();
   const collection: Collection<TheUser> = client.db("bookworm").collection<TheUser>("users");
@@ -21,9 +21,9 @@ export async function POST(req: NextRequest)
     upsert: true
   };
 
-  const result: UpdateResult<TheUser> = await collection.updateOne(x, y, z);
+  await collection.updateOne(x, y, z);
 
   await client.close();
 
-  return NextResponse.json(result);
+  return NextResponse.json("");
 }

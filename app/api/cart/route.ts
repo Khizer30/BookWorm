@@ -4,23 +4,27 @@ import { type MongoClient, type Collection, type Filter, type UpdateFilter, type
 import startClient from "@lib/MongoDB";
 import { type Res, type TheUser } from "@lib/Interface";
 
-// Profile
+// Req
+interface Req
+{
+  uid: string;
+  bid: string;
+}
+
+// Cart
 export async function POST(req: NextRequest): Promise<NextResponse<Res>>
 {
   const client: MongoClient = await startClient();
   const collection: Collection<TheUser> = client.db("bookworm").collection<TheUser>("users");
-  const user: TheUser = await req.json();
+  const { uid, bid }: Req = await req.json();
 
-  const x: Filter<TheUser> = { _id: user._id };
+  const x: Filter<TheUser> =
+  {
+    _id: uid
+  };
   const y: UpdateFilter<TheUser> =
   {
-    $set:
-    {
-      displayName: user.displayName,
-      phoneNumber: user.phoneNumber,
-      address: user.address,
-      city: user.city
-    }
+    $pull: { cart: { bid: bid } }
   };
 
   const result: UpdateResult<TheUser> = await collection.updateOne(x, y);
@@ -29,10 +33,10 @@ export async function POST(req: NextRequest): Promise<NextResponse<Res>>
 
   if (result.modifiedCount)
   {
-    return NextResponse.json({ code: 100, message: "User Updated" });
+    return NextResponse.json({ code: 100, message: "" });
   }
   else
   {
-    return NextResponse.json({ code: 500, message: "An Error Occurred, Please Try Later" });
+    return NextResponse.json({ code: 500, message: "" });
   }
 }
