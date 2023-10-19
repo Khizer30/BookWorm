@@ -44,6 +44,7 @@ interface Book
   authors: string[];
   image: StaticImageData | string;
   tags: string[];
+  pid: string;
 }
 
 // Store Menu
@@ -80,6 +81,7 @@ interface Item
   title: string;
   price: number;
   image: StaticImageData | string;
+  pid: string;
   quantity: number;
 }
 
@@ -92,4 +94,18 @@ interface Product
   quantity: number;
 }
 
-export type { Children, Radio, HeadlessUI, Res, BooksResponse, Book, StoreMenu, TheUser, Cart, Item, Product };
+// Stripe Request
+interface StripeReq
+{
+  uid: string;
+  products: StripeProduct[];
+}
+
+// Stripe Product
+interface StripeProduct
+{
+  price: string;
+  quantity: number;
+}
+
+export type { Children, Radio, HeadlessUI, Res, BooksResponse, Book, StoreMenu, TheUser, Cart, Item, Product, StripeReq, StripeProduct };

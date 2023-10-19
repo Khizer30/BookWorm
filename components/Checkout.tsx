@@ -1,10 +1,14 @@
 "use client";
+import Link from "next/link";
 import { useState, useEffect } from "react";
+import { useRouter, useSearchParams, type ReadonlyURLSearchParams } from "next/navigation";
+import { loadStripe, type Stripe } from "@stripe/stripe-js";
 import { type User } from "firebase/auth";
 //
 import CartItem from "@components/CartItem";
 import { useAuthContext } from "@lib/AuthContext";
-import { type Res, type Item } from "@lib/Interface";
+import { type AppRouterInstance } from "next/dist/shared/lib/app-router-context";
+import { type Res, type Item, type StripeReq, type StripeProduct } from "@lib/Interface";
 
 // Props
 interface Props
@@ -12,16 +16,22 @@ interface Props
   data: Item[];
 }
 
+// Start Stripe
+const stripePromise: Promise<Stripe | null> = loadStripe(process.env.NEXT_PUBLIC_STRIPE_PK!);
+
 // Checkout
 export default function Checkout({ data }: Props): JSX.Element
 {
   const [items, setItems] = useState<Item[]>(data);
   const [total, setTotal] = useState<number>(0);
   const user: User | null | undefined = useAuthContext();
+  const router: AppRouterInstance = useRouter();
+  const searchParams: ReadonlyURLSearchParams = useSearchParams();
 
   // On Mount
   useEffect(() =>
   {
+    // Calculate Total
     let temp: number = 0;
 
     for (let i: number = 0; i < items.length; i++)
@@ -30,6 +40,20 @@ export default function Checkout({ data }: Props): JSX.Element
     }
 
     setTotal(temp);
+
+    // URL Search
+    if (searchParams.get("success") === "true")
+    {
+      // Reset Items Here
+      // Message Here
+      // Clear Cart API
+      console.log("OK");
+    }
+    else if (searchParams.get("success") === "false")
+    {
+      // Error Here
+      console.log("NP");
+    }
   }, []);
 
   // Cart Item Mapper
@@ -77,6 +101,38 @@ export default function Checkout({ data }: Props): JSX.Element
     }
   }
 
+  // Stripe Checkout
+  async function stripeCheckout(): Promise<void>
+  {
+    if (user)
+    {
+      const products: StripeProduct[] = [];
+
+      for (let i: number = 0; i < items.length; i++)
+      {
+        products.push({ price: items[i].pid, quantity: items[i].quantity });
+      }
+
+      const response: Response = await fetch("/api/stripe",
+        {
+          mode: "same-origin",
+          method: "POST",
+          headers:
+          {
+            "Content-Type": "application/json"
+          },
+          body: JSON.stringify({ uid: user.uid, products: products } as StripeReq)
+        });
+      const result: Res = await response.json();
+
+      if (result.code === 100)
+      {
+        router.push(result.message);
+      }
+      // Error Here
+    }
+  }
+
   return (
     <>
       <div className=" w-full min-h-[60vh] p-6 flex flex-col justify-between items-center bg-light-grey">
@@ -86,17 +142,17 @@ export default function Checkout({ data }: Props): JSX.Element
           { (items.length === 0) &&
             <div className=" w-full h-full my-2 col-span-12 flex flex-col justify-center items-center">
               <h3 className=" my-2 text-xl font-medium font-secondary"> Your Cart is Empty </h3>
-              <button className=" w-36 h-12 my-2 rounded text-sm font-primary bg-white scale">
+              <Link href="/store" className=" w-36 h-12 my-2 flex justify-center items-center rounded text-sm font-primary bg-white scale">
                 View Collection
-              </button>
+              </Link>
             </div>
           }
           { items.map(itemMapper) }
         </div>
         { (items.length !== 0) &&
           <div className=" w-full flex flex-col justify-center items-end">
-            <h2 className=" md:text-lg font-medium font-secondary"> { `Subtotal Rs ${ total }` } </h2>
-            <button className=" w-full md:w-36 h-12 my-2 rounded text-sm text-white font-primary bg-dark-primary scale">
+            <h2 className=" md:text-lg font-medium font-secondary"> { `Subtotal Rs ${ total }.00` } </h2>
+            <button onClick={ stripeCheckout } className=" w-full md:w-36 h-12 my-2 rounded text-sm text-white font-primary bg-dark-primary scale">
               Checkout
             </button>
           </div>

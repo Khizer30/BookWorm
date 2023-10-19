@@ -109,7 +109,8 @@ async function getCart(id: string): Promise<Item[]>
         _id: 0,
         title: 1,
         price: 1,
-        image: 1
+        image: 1,
+        pid: 1
       }
     };
 
