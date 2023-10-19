@@ -35,7 +35,7 @@ export default function LogInForm(): JSX.Element
       cart: []
     };
 
-    await fetch("/api/login",
+    fetch("/api/login",
       {
         mode: "same-origin",
         method: "POST",

@@ -51,7 +51,20 @@ export default function Checkout({ data }: Props): JSX.Element
       setMessage("Thank You For Your Purchase");
       setIsOpen(true);
 
-      // Clear Cart API
+      // Clear Cart
+      if (user)
+      {
+        fetch("/api/clear_cart",
+          {
+            mode: "same-origin",
+            method: "POST",
+            headers:
+            {
+              "Content-Type": "application/json"
+            },
+            body: JSON.stringify({ uid: user.uid })
+          });
+      }
     }
     else if (searchParams.get("success") === "false")
     {
