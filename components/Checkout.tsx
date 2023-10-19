@@ -6,6 +6,7 @@ import { loadStripe, type Stripe } from "@stripe/stripe-js";
 import { type User } from "firebase/auth";
 //
 import CartItem from "@components/CartItem";
+import Popup from "@components/Popup";
 import { useAuthContext } from "@lib/AuthContext";
 import { type AppRouterInstance } from "next/dist/shared/lib/app-router-context";
 import { type Res, type Item, type StripeReq, type StripeProduct } from "@lib/Interface";
@@ -24,6 +25,8 @@ export default function Checkout({ data }: Props): JSX.Element
 {
   const [items, setItems] = useState<Item[]>(data);
   const [total, setTotal] = useState<number>(0);
+  const [isOpen, setIsOpen] = useState<boolean>(false);
+  const [message, setMessage] = useState<string>("");
   const user: User | null | undefined = useAuthContext();
   const router: AppRouterInstance = useRouter();
   const searchParams: ReadonlyURLSearchParams = useSearchParams();
@@ -44,15 +47,16 @@ export default function Checkout({ data }: Props): JSX.Element
     // URL Search
     if (searchParams.get("success") === "true")
     {
-      // Reset Items Here
-      // Message Here
+      setItems([]);
+      setMessage("Thank You For Your Purchase");
+      setIsOpen(true);
+
       // Clear Cart API
-      console.log("OK");
     }
     else if (searchParams.get("success") === "false")
     {
-      // Error Here
-      console.log("NP");
+      setMessage("Your Checkout Failed");
+      setIsOpen(true);
     }
   }, []);
 
@@ -129,7 +133,11 @@ export default function Checkout({ data }: Props): JSX.Element
       {
         router.push(result.message);
       }
-      // Error Here
+      else
+      {
+        setMessage(result.message);
+        setIsOpen(true);
+      }
     }
   }
 
@@ -157,6 +165,13 @@ export default function Checkout({ data }: Props): JSX.Element
             </button>
           </div>
         }
+
+        <Popup
+          title="Dear Customer"
+          message={ message }
+          isOpen={ isOpen }
+          close={ () => setIsOpen(false) }
+        />
       </div >
     </>
   );

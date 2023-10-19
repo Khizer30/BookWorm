@@ -18,8 +18,8 @@ interface Props
 // Product Form
 export default function ProductForm({ bid, title }: Props): JSX.Element
 {
-  const [isOpen, setIsOpen] = useState<boolean>(false);
   const [quantity, setQuantity] = useState<number>(1);
+  const [isOpen, setIsOpen] = useState<boolean>(false);
   const [message, setMessage] = useState<string>("");
   const user: User | null | undefined = useAuthContext();
   const router: AppRouterInstance = useRouter();
