@@ -16,7 +16,9 @@ export async function POST(req: NextRequest): Promise<NextResponse<Res>>
 
     const session: Stripe.Response<Stripe.Checkout.Session> = await stripe.checkout.sessions.create({
       line_items: data.products,
+      customer_email: data.email,
       mode: "payment",
+      payment_method_types: ["card"],
       success_url: `${ url.origin }/cart/${ data.uid }?success=true`,
       cancel_url: `${ url.origin }/cart/${ data.uid }?success=false`
     });

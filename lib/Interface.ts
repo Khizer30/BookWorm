@@ -98,6 +98,7 @@ interface Product
 interface StripeReq
 {
   uid: string;
+  email: string;
   products: StripeProduct[];
 }
 

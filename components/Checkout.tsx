@@ -138,7 +138,7 @@ export default function Checkout({ data }: Props): JSX.Element
           {
             "Content-Type": "application/json"
           },
-          body: JSON.stringify({ uid: user.uid, products: products } as StripeReq)
+          body: JSON.stringify({ uid: user.uid, email: user.email, products: products } as StripeReq)
         });
       const result: Res = await response.json();
 
