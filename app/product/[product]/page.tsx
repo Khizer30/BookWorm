@@ -14,6 +14,17 @@ export const metadata: Metadata =
 {
   title: "Product | BookWorm",
   keywords: ["BookWorm", "Product"],
+  description: "BookWorm is your premier e-commerce destination for a vast selection of books.",
+  viewport:
+  {
+    width: "device-width",
+    initialScale: 1
+  },
+  authors:
+  {
+    name: "Syed Muhammad Khizer",
+    url: "https://syedmuhammadkhizer.vercel.app"
+  },
   icons:
   {
     icon:
