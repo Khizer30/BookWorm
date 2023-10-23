@@ -6,7 +6,7 @@ import { type User } from "firebase/auth";
 //
 import Popup from "@components/Popup";
 import { useAuthContext } from "@lib/AuthContext";
-import { type Res } from "@lib/Interface";
+import { type Res, type Product } from "@lib/Interface";
 
 // Props
 interface Props
@@ -43,7 +43,7 @@ export default function ProductForm({ bid, title }: Props): JSX.Element
           {
             "Content-Type": "application/json"
           },
-          body: JSON.stringify({ uid: user.uid, bid: bid, title: title, quantity: quantity })
+          body: JSON.stringify({ uid: user.uid, bid: bid, title: title, quantity: quantity } as Product)
         });
       const result: Res = await response.json();
 

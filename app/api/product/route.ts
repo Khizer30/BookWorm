@@ -9,18 +9,18 @@ export async function POST(req: NextRequest): Promise<NextResponse<Res>>
 {
   const client: MongoClient = await startClient();
   const collection: Collection<TheUser> = client.db("bookworm").collection<TheUser>("users");
-  const item: Product = await req.json();
+  const { uid, bid, title, quantity }: Product = await req.json();
 
   let x: Filter<TheUser> =
   {
-    _id: item.uid,
-    "cart.bid": item.bid
+    _id: uid,
+    "cart.bid": bid
   };
   let y: UpdateFilter<TheUser> =
   {
     $set:
     {
-      "cart.$.quantity": item.quantity
+      "cart.$.quantity": quantity
     }
   };
 
@@ -30,7 +30,7 @@ export async function POST(req: NextRequest): Promise<NextResponse<Res>>
   {
     x =
     {
-      _id: item.uid
+      _id: uid
     };
     y =
     {
@@ -38,8 +38,8 @@ export async function POST(req: NextRequest): Promise<NextResponse<Res>>
       {
         cart:
         {
-          bid: item.bid,
-          quantity: item.quantity
+          bid: bid,
+          quantity: quantity
         }
       }
     };
@@ -49,5 +49,5 @@ export async function POST(req: NextRequest): Promise<NextResponse<Res>>
 
   await client.close();
 
-  return NextResponse.json({ code: 100, message: `x${ item.quantity } ${ item.title }` });
+  return NextResponse.json({ code: 100, message: `x${ quantity } ${ title }` });
 }

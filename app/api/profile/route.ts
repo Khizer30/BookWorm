@@ -9,17 +9,17 @@ export async function POST(req: NextRequest): Promise<NextResponse<Res>>
 {
   const client: MongoClient = await startClient();
   const collection: Collection<TheUser> = client.db("bookworm").collection<TheUser>("users");
-  const user: TheUser = await req.json();
+  const { _id, displayName, phoneNumber, address, city }: TheUser = await req.json();
 
-  const x: Filter<TheUser> = { _id: user._id };
+  const x: Filter<TheUser> = { _id: _id };
   const y: UpdateFilter<TheUser> =
   {
     $set:
     {
-      displayName: user.displayName,
-      phoneNumber: user.phoneNumber,
-      address: user.address,
-      city: user.city
+      displayName: displayName,
+      phoneNumber: phoneNumber,
+      address: address,
+      city: city
     }
   };
 

@@ -91,10 +91,10 @@ export default function ProfileForm({ user }: Props): JSX.Element
   // Update Profile
   async function updateProfile(): Promise<void>
   {
-    if (checkInput("Name", inputs.displayName?.trim(), 100, regex.displayName)
-      && checkInput("Phone No.", inputs.phoneNumber?.trim(), 11, regex.phoneNumber)
-      && checkInput("Address", inputs.address?.trim(), 300, regex.address)
-      && checkInput("City", inputs.city?.trim(), 100, regex.city))
+    if (checkInput("Name", inputs.displayName, 100, regex.displayName)
+      && checkInput("Phone No.", inputs.phoneNumber, 11, regex.phoneNumber)
+      && checkInput("Address", inputs.address, 300, regex.address)
+      && checkInput("City", inputs.city, 100, regex.city))
     {
       await setUser();
     }

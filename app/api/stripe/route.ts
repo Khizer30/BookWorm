@@ -12,15 +12,15 @@ export async function POST(req: NextRequest): Promise<NextResponse<Res>>
   try
   {
     const url: URL = new URL(req.url);
-    const data: StripeReq = await req.json();
+    const { uid, email, products }: StripeReq = await req.json();
 
     const session: Stripe.Response<Stripe.Checkout.Session> = await stripe.checkout.sessions.create({
-      line_items: data.products,
-      customer_email: data.email,
+      line_items: products,
+      customer_email: email,
       mode: "payment",
       payment_method_types: ["card"],
-      success_url: `${ url.origin }/cart/${ data.uid }?success=true`,
-      cancel_url: `${ url.origin }/cart/${ data.uid }?success=false`
+      success_url: `${ url.origin }/cart/${ uid }?success=true`,
+      cancel_url: `${ url.origin }/cart/${ uid }?success=false`
     });
 
     if (session.url)
