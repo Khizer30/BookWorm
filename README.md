@@ -49,6 +49,6 @@ NEXT_PUBLIC_STRIPE_PK=<your_stripe_public_key>
 npm run dev
 ```
 
-## License 📄
+## License
 
 This is an open-source project. Feel free to use it!
