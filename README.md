@@ -23,7 +23,8 @@ technologies to ensure performance and scalability.
 1. Clone the repository:
    ```bash
    git clone https://github.com/Khizer30/BookWorm.git
-
+   ```
+    ```bash
    cd BookWorm
    ```
 
