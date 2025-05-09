@@ -30,24 +30,24 @@ technologies to ensure performance and scalability.
 
 2. Install Dependendencies
 
-```bash
-npm install
-```
+   ```bash
+   npm install
+   ```
 
 3. Set up environment vairalbes in the `.env` file.
 
-```bash
-DB=<your_mongodb_connection_string>
-NEXT_PUBLIC_FIREBASE=<your_firebase_api_key>
-STRIPE_SK=<your_stripe_secret_key>
-NEXT_PUBLIC_STRIPE_PK=<your_stripe_public_key>
-```
+   ```bash
+   DB=<your_mongodb_connection_string>
+   NEXT_PUBLIC_FIREBASE=<your_firebase_api_key>
+   STRIPE_SK=<your_stripe_secret_key>
+   NEXT_PUBLIC_STRIPE_PK=<your_stripe_public_key>
+   ```
 
 4. Run the development server:
 
-```bash
-npm run dev
-```
+   ```bash
+   npm run dev
+   ```
 
 ## License
 
